@@ -181,10 +181,10 @@ class XML_FOAF extends XML_FOAF_Common
         $page =& $this->foaf->addChild('foaf:page');
         $document =& $page->addChild('foaf:Document', '', array('rdf:about' => $document_uri));
         if(!is_null($title)) {
-        	$document->addChild('dc:title', $title);
+            $document->addChild('dc:title', $title);
         }
         if(!is_null($description)) {
-        	$document->addChild('dc:description', $description);
+            $document->addChild('dc:description', $description);
         }
         $this->children['page'][] =& $page;
     }
@@ -973,23 +973,23 @@ class XML_FOAF extends XML_FOAF_Common
      
     function addChild(&$xml_tree)
     {
-    	if (is_array($xml_tree)) {
-    		if (is_string($xml_tree['xml'])) {
-    			$tree = new XML_Tree;
-    			$tree->getTreeFromString($xml_tree['xml']);
-    			$xml_tree['child']->addChild($tree);
-    		} else {
-    			$xml_tree['child']->addChild($xml_tree['xml']);
-    		}
-    	} else {
-    		if (is_string($xml_tree)) {
-    			$tree = new XML_Tree;
-    			$tree->getTreeFromString($xml_tree);
-    			$this->foaf->addChild($tree);
-    		} else {
-    			$this->foaf->addChild($xml_tree);
-    		}
-    	}
+        if (is_array($xml_tree)) {
+            if (is_string($xml_tree['xml'])) {
+                $tree = new XML_Tree;
+                $tree->getTreeFromString($xml_tree['xml']);
+                $xml_tree['child']->addChild($tree);
+            } else {
+                $xml_tree['child']->addChild($xml_tree['xml']);
+            }
+        } else {
+            if (is_string($xml_tree)) {
+                $tree = new XML_Tree;
+                $tree->getTreeFromString($xml_tree);
+                $this->foaf->addChild($tree);
+            } else {
+                $this->foaf->addChild($xml_tree);
+            }
+        }
     }
 
     /**
@@ -1019,7 +1019,7 @@ class XML_FOAF extends XML_FOAF_Common
         if ($without_rdf == false) {
             $foaf = "<rdf:RDF " .$this->_getXmlns(). ">\n" .$this->foaf->get(). "\n</rdf:RDF>";
         } else {
-        	$foaf = $this->foaf->get();
+            $foaf = $this->foaf->get();
         }
         require_once 'XML/Beautifier.php';
         $beautifier = new XML_Beautifier();
@@ -1037,9 +1037,9 @@ class XML_FOAF extends XML_FOAF_Common
      
     function get($without_rdf = false)
     {
-    	return $this->toXML($without_rdf);
+        return $this->toXML($without_rdf);
     }
-    	
+        
 
     /**
      * Set an XML Namespace
