@@ -130,7 +130,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function parseFromFile($file,$use_include_path = false)
     {
-        $this->foaf = file_get_contents($file,$use_include_path);
+        $this->foaf_xml = file_get_contents($file,$use_include_path);
         $this->_parse();
     }
 
@@ -144,7 +144,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function parseFromMem($mem)
     {
-        $this->foaf = $mem;
+        $this->foaf_xml = $mem;
         $this->_parse();
     }
 
@@ -159,7 +159,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _parse()
     {
-        $this->foaf =& $this->rdf_parser->generateModel($this->foaf);
+        $this->foaf =& $this->rdf_parser->generateModel($this->foaf_xml);
         $this->foaf_data = $this->_fetchAgent();
         $this->_fetchAimChatID();
         $this->_fetchCurrentProject();

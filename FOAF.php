@@ -69,8 +69,18 @@ class XML_FOAF extends XML_FOAF_Common
      * @access private
      */
 
-    function __construct ()
+    function __construct ($xml_foaf_parser_object = null)
     {
+        if(!is_null($xml_foaf_parser_object)) {
+           if(is_a($xml_foaf_parser_object,'xml_foaf_parser')) {
+                $regex[] = '/<([a-zA-Z0-9_]+:)?RDF .*?>/';
+                $regex[] = '/<\/([a-zA-Z0-9_]+:)?RDF>/';
+                $foaf = preg_replace($regex, '', $xml_foaf_parser_object->foaf_xml);
+                require_once 'XML/Tree.php';
+                $this->xml_tree = new XML_Tree;
+                $this->foaf =& $this->xml_tree->getTreeFromString($foaf);
+            }
+        }
         $this->_setXmlns();
     }
 
@@ -79,9 +89,9 @@ class XML_FOAF extends XML_FOAF_Common
      * @see XML_FOAF::__construct
      */
 
-    function XML_FOAF ()
+    function XML_FOAF ($xml_foaf_parser_object = null)
     {
-        $this->__construct();
+        $this->__construct($xml_foaf_parser_object);
     }
 
     /**
@@ -1037,9 +1047,6 @@ class XML_FOAF extends XML_FOAF_Common
         } else {
             $foaf = $this->foaf->get();
         }
-        require_once 'XML/Beautifier.php';
-        $beautifier = new XML_Beautifier();
-        $foaf = $beautifier->formatString($foaf);
         return $foaf;
     }
 
