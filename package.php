@@ -34,6 +34,10 @@ $result = $package->setOptions(array(
                                  'docs/examples' => 'doc')
     ));
 
+$package->addDependency('php', '4.2.0', 'ge', 'php', false);
+$package->addDependency('PEAR', '1.0b1', 'ge', 'pkg', false);
+$package->addDependency('RDF', true, 'has', 'pkg', false);
+
 if (PEAR::isError($result)) {
     echo $result->getMessage();
     die();
