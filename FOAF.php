@@ -1078,6 +1078,8 @@ class XML_FOAF
     {
         if ($without_rdf == false) {
             $foaf = "<rdf:RDF " .$this->_getXmlns(). ">\n" .$this->foaf->get(). "\n</rdf:RDF>";
+        } else {
+        	$foaf = $this->foaf->get();
         }
         require_once 'XML/Beautifier.php';
         $beautifier = new XML_Beautifier();
