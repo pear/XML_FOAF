@@ -157,6 +157,7 @@ class XML_FOAF extends XML_FOAF_Common
 
     function addDepiction($uri)
     {
+        $uri = $this->_resolveURI($uri);
         $this->children['depiction'][] =& $this->foaf->addChild('foaf:depiction', '', array('rdf:resource' => $uri));
     }
 
@@ -172,6 +173,7 @@ class XML_FOAF extends XML_FOAF_Common
 
     function addFundedBy($uri)
     {
+        $uri = $this->_resolveURI($uri);
         $this->children['fundedby'][] =& $this->foaf->addChild('foaf:fundedBy', '', array('rdf:resource' => $uri));
     }
 
@@ -187,6 +189,7 @@ class XML_FOAF extends XML_FOAF_Common
 
     function addLogo($uri)
     {
+        $uri = $this->_resolveURI($uri);
         $this->children['logo'][] =& $this->foaf->addChild('foaf:logo', '', array('rdf:resource' => $uri));
     }
 
@@ -227,6 +230,7 @@ class XML_FOAF extends XML_FOAF_Common
 
     function addTheme($uri)
     {
+        $uri = $this->_resolveURI($uri);
         $this->children['theme'][] =& $this->foaf->addChild('foaf:theme', '', array('rdf:resource' => $uri));
     }
 
@@ -554,6 +558,7 @@ class XML_FOAF extends XML_FOAF_Common
 
     function addHomepage($uri)
     {
+        $uri = $this->_resolveURI($uri);
         $this->children['homepage'][] =& $this->foaf->addChild('foaf:homepage', '', array('rdf:resource' => $uri));
     }
 
@@ -569,6 +574,7 @@ class XML_FOAF extends XML_FOAF_Common
 
     function addWeblog($uri)
     {
+        $uri = $this->_resolveURI($uri);
         $this->children['weblog'][] =& $this->foaf->addChild('foaf:weblog', '', array('rdf:resource' => $uri));
     }
 
@@ -583,6 +589,7 @@ class XML_FOAF extends XML_FOAF_Common
 
     function addMade($uri)
     {
+        $uri = $this->_resolveURI($uri);
         $this->children['made'][] =& $this->foaf->addChild('foaf:made', '', array('rdf:resource' => $uri));
     }
 
@@ -708,6 +715,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addImg($uri)
     {
         if($this->isAllowedForAgent('img')) {
+            $uri = $this->_resolveURI($uri);
             $this->children['img'][] =& $this->foaf->addChild('foaf:img', '', array('rdf:resource' => $uri));
             return true;
         } else {
@@ -729,6 +737,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addMyersBriggs($myers_briggs)
     {
         if($this->isAllowedForAgent('myersbriggs')) {
+            $uri = $this->_resolveURI($uri);
             $this->children['myersbriggs'][] =& $this->foaf->addChild('foaf:myersBriggs', $myers_briggs);
             return true;
         } else {
@@ -749,6 +758,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addWorkplaceHomepage($uri)
     {
         if ($this->isAllowedForAgent('workplaceHomepage')) {
+            $uri = $this->_resolveURI($uri);
             $this->children['workplacehomepage'][] =& $this->foaf->addChild('foaf:workplaceHomepage', '', array('rdf:resource' => $uri));
             return true;
         } else {
@@ -769,6 +779,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addWorkInfoHomepage($uri)
     {
         if($this->isAllowedForAgent('workInfoHomepage')) {
+            $uri = $this->_resolveURI($uri);
             $this->children['workinfohomepage'][] =& $this->foaf->addChild('foaf:workInfoHomepage', '', array('rdf:resource' => $uri));
             return true;
         } else {
@@ -789,6 +800,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addSchoolHomepage($uri)
     {
         if($this->isAllowedForAgent('schoolHomepage')) {
+            $uri = $this->_resolveURI($uri);
             $this->childen['schoolhomepage'][] = $this->foaf->addChild('foaf:schoolHomepage', '', array('rdf:resource' => $uri));
             return true;
         } else {
@@ -809,6 +821,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addPublications($uri)
     {
         if($this->isAllowedForAgent('publications')) {
+            $uri = $this->_resolveURI($uri);
             $this->children['publications'][] =& $this->foaf->addChild('foaf:publications', '', array('rdf:resource' => $uri));
             return true;
         } else {
@@ -829,6 +842,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addCurrentProject($uri)
     {
         if($this->isAllowedForAgent('currentProject')) {
+            $uri = $this->_resolveURI($uri);
             $this->children['currentproject'][] =& $this->foaf->addChild('foaf:currentProject', '', array('rdf:resource' => $uri));
             return true;
         } else {
@@ -849,6 +863,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addPastProject($uri)
     {
         if($this->isAllowedForAgent('pastProject')) {
+            $uri = $this->_resolveURI($uri);
             $this->children['pastproject'][] =& $this->foaf->addChild('foaf:pastProject', '', array('rdf:resource' => $uri));
             return true;
         } else {
@@ -898,6 +913,7 @@ class XML_FOAF extends XML_FOAF_Common
     function addInterest($uri)
     {
         if($this->isAllowedForAgent('interest')) {
+            $uri = $this->_resolveURI($uri);
             $this->children['interest'][] =& $this->foaf->addChild('foaf:interest', '', array('rdf:resource' => $uri));
         } else {
             return FALSE;
@@ -969,6 +985,7 @@ class XML_FOAF extends XML_FOAF_Common
 
     function addSeeAlso($uri)
     {
+        $uri = $this->_resolveURI($uri);
         $this->children['seealso'][] =& $this->foaf->addChild('rdfs:seeAlso', '', array('rdf:resource' => $uri));
     }
 
@@ -1107,6 +1124,23 @@ class XML_FOAF extends XML_FOAF_Common
         $this->namespaces['rdf'] = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
         $this->namespaces['rdfs'] = "http://www.w3.org/2000/01/rdf-schema#";
         $this->namespaces['dc'] = "http://purl.org/dc/elements/1.1/";
+    }
+    
+    /**
+     * Validate a URI
+     *
+     * @param string $uri URI to validate
+     * @access private
+     * @return mixed false if invalid, full URI if not
+     */
+     
+    function _resolveURI($uri)
+    {
+        require_once 'Net/URL.php';
+        $net_url = new Net_URL($uri);
+        $net_url->setProtocol('http');
+        $uri = $net_url->getURL();
+        return $uri;
     }
 }
 
