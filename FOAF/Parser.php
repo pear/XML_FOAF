@@ -26,7 +26,6 @@
 
 require_once 'XML/FOAF/Common.php';
 
-define('RDFAPI_INCLUDE_DIR', 'XML/FOAF/RAP/');
 define('XML_FOAF_NS','http://xmlns.com/foaf/0.1/');
 define('XML_FOAF_DC_NS','http://purl.org/dc/elements/1.1/');
 define('XML_FOAF_RDF_NS','http://www.w3.org/1999/02/22-rdf-syntax-ns#');
@@ -93,8 +92,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      */
 
     function __construct() {
-        require_once RDFAPI_INCLUDE_DIR . 'RdfAPI.php';
-        $this->rdf_parser =& new RdfParser;
+        require_once 'RDF.php';
+        $this->rdf_parser =& new RDF_Parser;
     }
 
     /**
