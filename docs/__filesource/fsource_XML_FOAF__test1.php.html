@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>File Source for test1.php</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">XML_FOAF</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+  		  [ <a href="../classtrees_XML_FOAF.html" class="menu">class tree: XML_FOAF</a> ]
+		  [ <a href="../elementindex_XML_FOAF.html" class="menu">index: XML_FOAF</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+      <b>Packages:</b><br />
+              <a href="../li_XML_FOAF.html">XML_FOAF</a><br />
+            <br /><br />
+                  
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Source for file test1.php</h1>
+<p>Documentation is available at <a href="../XML_FOAF/_FOAF_test1_php.html">test1.php</a></p>
+<pre><a name="a1"></a><br />1     <strong>&lt;?php</strong><a name="a2"></a><br />2     <font color="blue">require_once</font> <font color="#66cccc">'XML/FOAF.php'</font>;<a name="a3"></a><br />3     <a name="a4"></a><br />4     <strong>$foaf</strong> = new <a href="../XML_FOAF/XML_FOAF.html">XML_FOAF</a><strong>(</strong><strong>)</strong>;<a name="a5"></a><br />5     <a name="a6"></a><br />6     <strong>$foaf</strong><strong>-&gt;</strong>newAgent<strong>(</strong><font color="#66cccc">'group'</font><strong>)</strong>;<a name="a7"></a><br />7     <strong>$foaf</strong><strong>-&gt;</strong>setName<strong>(</strong><font color="#66cccc">'Sebastian Bergmann'</font><strong>)</strong>;<a name="a8"></a><br />8     <strong>$foaf</strong><strong>-&gt;</strong>setTitle<strong>(</strong><font color="#66cccc">'Mr'</font><strong>)</strong>;<a name="a9"></a><br />9     <strong>$foaf</strong><strong>-&gt;</strong>setFirstName<strong>(</strong><font color="#66cccc">'Sebastian'</font><strong>)</strong>;<a name="a10"></a><br />10    <strong>$foaf</strong><strong>-&gt;</strong>setSurname<strong>(</strong><font color="#66cccc">'Bergmann'</font><strong>)</strong>;<a name="a11"></a><br />11    <strong>$foaf</strong><strong>-&gt;</strong>setGender<strong>(</strong><font color="#66cccc">'male'</font><strong>)</strong>;<a name="a12"></a><br />12    <strong>$foaf</strong><strong>-&gt;</strong>addMbox<strong>(</strong><font color="#66cccc">'mailto:sb@sebastian-bergmann.de'</font><strong>,</strong> true<strong>)</strong>;<a name="a13"></a><br />13    <strong>$foaf</strong><strong>-&gt;</strong>addHomepage<strong>(</strong><font color="#66cccc">'http://www.sebastian-bergmann.de/'</font><strong>)</strong>;<a name="a14"></a><br />14    <strong>$foaf</strong><strong>-&gt;</strong>addWeblog<strong>(</strong><font color="#66cccc">'http://www.sebastian-bergmann.de/blog/'</font><strong>)</strong>;<a name="a15"></a><br />15    <strong>$foaf</strong><strong>-&gt;</strong>addJabberID<strong>(</strong><font color="#66cccc">'sebastian_bergmann@amessage.de'</font><strong>)</strong>;<a name="a16"></a><br />16    <strong>$foaf</strong><strong>-&gt;</strong>addIcqChatID<strong>(</strong><font color="#66cccc">'1249279014'</font><strong>)</strong>;<a name="a17"></a><br />17    <strong>$foaf</strong><strong>-&gt;</strong>addImg<strong>(</strong><font color="#66cccc">'http://www.sebastian-bergmann.de/bio/portrait.jpg'</font><strong>)</strong>;<a name="a18"></a><br />18    <strong>$foaf</strong><strong>-&gt;</strong>addPage<strong>(</strong><font color="#66cccc">'http://www.sebastian-bergmann.de/curriculum_vitae'</font><strong>,</strong> <font color="#66cccc">'Curriculum Vitae'</font><strong>)</strong>;<a name="a19"></a><br />19    <strong>$foaf</strong><strong>-&gt;</strong>addPublications<strong>(</strong><font color="#66cccc">'http://www.sebastian-bergmann.de/publications'</font><strong>,</strong> <font color="#66cccc">'Publications'</font><strong>)</strong>;<a name="a20"></a><br />20    <strong>$foaf</strong><strong>-&gt;</strong>addSchoolHomepage<strong>(</strong><font color="#66cccc">'http://www.kardinal-frings-gymnasium.de/'</font><strong>)</strong>;<a name="a21"></a><br />21    <strong>$foaf</strong><strong>-&gt;</strong>addSchoolHomepage<strong>(</strong><font color="#66cccc">'http://www.informatik.uni-bonn.de/'</font><strong>)</strong>;<a name="a22"></a><br />22    <strong>$foaf</strong><strong>-&gt;</strong>setBasedNear<strong>(</strong>50.8<strong>,</strong>7.2<strong>)</strong>;<a name="a23"></a><br />23    <a name="a24"></a><br />24    <font color="blue">if</font><strong>(</strong><strong>!</strong>isset<strong>(</strong><strong>$_GET</strong><strong>[</strong><font color="#66cccc">'xml'</font><strong>]</strong><strong>)</strong><strong>)</strong> <strong>{</strong><a name="a25"></a><br />25        echo <font color="#66cccc">&quot;&lt;pre&gt;&quot;</font> .<a href="http://www.php.net/htmlentities">htmlentities</a><strong>(</strong><strong>$foaf</strong><strong>-&gt;</strong>get<strong>(</strong><strong>)</strong><strong>)</strong>. <font color="#66cccc">&quot;&lt;/pre&gt;&quot;</font>;<a name="a26"></a><br />26        echo <font color="#66cccc">&quot;&lt;hr /&gt;&quot;</font>;<a name="a27"></a><br />27        <a href="http://www.php.net/show_source">show_source</a><strong>(</strong>__FILE__<strong>)</strong>;<a name="a28"></a><br />28    <strong>}</strong> else <strong>{</strong><a name="a29"></a><br />29        <a href="http://www.php.net/header">header</a><strong>(</strong><font color="#66cccc">'Content-Type: text/xml'</font><strong>)</strong>;<a name="a30"></a><br />30        echo <strong>$foaf</strong><strong>-&gt;</strong>get<strong>(</strong><strong>)</strong>;<a name="a31"></a><br />31    <strong>}</strong><a name="a32"></a><br />32    <strong>?&gt;</strong></pre>
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Mon, 12 Jan 2004 18:26:27 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

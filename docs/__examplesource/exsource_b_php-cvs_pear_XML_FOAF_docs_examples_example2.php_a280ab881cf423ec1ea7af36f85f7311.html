@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Basic Usage of XML_FOAF_Parser</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">XML_FOAF</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+  		  [ <a href="../classtrees_XML_FOAF.html" class="menu">class tree: XML_FOAF</a> ]
+		  [ <a href="../elementindex_XML_FOAF.html" class="menu">index: XML_FOAF</a> ]
+		  [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+      <b>Packages:</b><br />
+              <a href="../li_XML_FOAF.html">XML_FOAF</a><br />
+            <br /><br />
+                  
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">Basic Usage of XML_FOAF_Parser</h1>
+<pre><br />1     <strong>&lt;?php</strong><br />2     <br />3     <font color="blue">require_once</font> <font color="#66cccc">'../../FOAF/Parser.php'</font>;<br />4     <br />5     <strong>$parser</strong> = new <a href="../XML_FOAF/XML_FOAF_Parser.html#methodXML_FOAF_Parser">XML_FOAF_Parser</a>;<br />6     <br />7     <strong>$foafs</strong> = <a href="http://www.php.net/glob">glob</a><strong>(</strong><font color="#66cccc">'../../tests/foafs/*.foaf'</font><strong>)</strong>;<br />8     <br />9     <font color="green">//var_dump($foafs);</font><br />10    <br />11    <strong>$foaf_rand</strong> = <a href="http://www.php.net/rand">rand</a><strong>(</strong>0<strong>,</strong><a href="http://www.php.net/sizeof">sizeof</a><strong>(</strong><strong>$foafs</strong><strong>)</strong>-1<strong>)</strong>;<br />12    <br />13    <strong>$foaf</strong> = isset<strong>(</strong><strong>$_GET</strong><strong>[</strong><font color="#66cccc">'foaf'</font><strong>]</strong><strong>)</strong> ? <a href="http://www.php.net/file_get_contents">file_get_contents</a><strong>(</strong><a href="http://www.php.net/urldecode">urldecode</a><strong>(</strong><strong>$_GET</strong><strong>[</strong><font color="#66cccc">'foaf'</font><strong>]</strong><strong>)</strong><strong>)</strong> : <a href="http://www.php.net/file_get_contents">file_get_contents</a><strong>(</strong><strong>$foafs</strong><strong>[</strong><strong>$foaf_rand</strong><strong>]</strong><strong>)</strong>;<br />14    <br />15    echo <font color="#66cccc">'&lt;h1&gt;'</font> .<strong>$foaf_uri</strong> = isset<strong>(</strong><strong>$_GET</strong><strong>[</strong><font color="#66cccc">'foaf'</font><strong>]</strong><strong>)</strong> ? <a href="http://www.php.net/urldecode">urldecode</a><strong>(</strong><strong>$_GET</strong><strong>[</strong><font color="#66cccc">'foaf'</font><strong>]</strong><strong>)</strong> : <strong>$foafs</strong><strong>[</strong><strong>$foaf_rand</strong><strong>]</strong>;<br />16    echo <font color="#66cccc">'&lt;/h1&gt;'</font>;<br />17    <font color="green">//echo &quot;&lt;pre&gt;&quot; .htmlentities($foaf). &quot;&lt;/pre&gt;&quot;;</font><br />18    <font color="blue">require_once</font> <font color="#66cccc">'Benchmark/Timer.php'</font>;<br />19    <strong>$timer</strong> = new Benchmark_Timer<strong>(</strong><strong>)</strong>;<br />20    <strong>$timer</strong><strong>-&gt;</strong>start<strong>(</strong><strong>)</strong>;<br />21    <strong>$parser</strong><strong>-&gt;</strong><a href="../XML_FOAF/XML_FOAF_Parser.html#methodparseFromMem">parseFromMem</a><strong>(</strong><strong>$foaf</strong><strong>)</strong>;<br />22    <strong>$timer</strong><strong>-&gt;</strong>setMarker<strong>(</strong><font color="#66cccc">'Time Taken to Parse the FOAF'</font><strong>)</strong>;<br />23    <strong>$timer</strong><strong>-&gt;</strong>stop<strong>(</strong><strong>)</strong>;<br />24    <strong>$timer</strong><strong>-&gt;</strong>display<strong>(</strong><strong>)</strong>;<br />25    <br />26    echo <font color="#66cccc">&quot;&lt;h2&gt;FOAF as Array&lt;/h2&gt;&quot;</font>;<br />27    <a href="http://www.php.net/var_dump">var_dump</a><strong>(</strong><strong>$parser</strong><strong>-&gt;</strong><a href="../XML_FOAF/XML_FOAF_Parser.html#methodtoArray">toArray</a><strong>(</strong><strong>)</strong><strong>)</strong>;<br />28    <strong>?&gt;</strong></pre>
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Mon, 12 Jan 2004 18:26:24 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
