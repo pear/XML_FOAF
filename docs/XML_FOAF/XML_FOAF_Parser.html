@@ -37,8 +37,6 @@
 		</a><br>
 			<a href="../XML_FOAF/_FOAF_FOAF_Parser_php.html">		Parser.php
 		</a><br>
-			<a href="../XML_FOAF/_FOAF_test1_php.html">		test1.php
-		</a><br>
 	  </div><br />
       
             <b>Classes:</b><br />
@@ -116,6 +114,7 @@ Source Location: XML/FOAF/Parser.php<br /><br />
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchDcTitle">_fetchDcTitle</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchDepiction">_fetchDepiction</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchFundedBy">_fetchFundedBy</a></li>
+    <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchHoldsAccount">_fetchHoldsAccount</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchHomepage">_fetchHomepage</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchIcqChatID">_fetchIcqChatID</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchImg">_fetchImg</a></li>
@@ -129,13 +128,10 @@ Source Location: XML/FOAF/Parser.php<br /><br />
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchMsnChatID">_fetchMsnChatID</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchMyersBriggs">_fetchMyersBriggs</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchNick">_fetchNick</a></li>
-    <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchOnlineAccount">_fetchOnlineAccount</a></li>
-    <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchOnlineChatAccount">_fetchOnlineChatAccount</a></li>
-    <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchOnlineEcommerceAccount">_fetchOnlineEcommerceAccount</a></li>
-    <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchOnlineGamingAccount">_fetchOnlineGamingAccount</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchPage">_fetchPage</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchPastProject">_fetchPastProject</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchPhone">_fetchPhone</a></li>
+    <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchProperty">_fetchProperty</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchPublication">_fetchPublication</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchSchoolHomepage">_fetchSchoolHomepage</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_fetchSeeAlso">_fetchSeeAlso</a></li>
@@ -153,6 +149,7 @@ Source Location: XML/FOAF/Parser.php<br /><br />
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_getMembershipClass">_getMembershipClass</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_getName">_getName</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_getPlan">_getPlan</a></li>
+    <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_getProperty">_getProperty</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_getSurname">_getSurname</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_getTitle">_getTitle</a></li>
     <li><a href="../XML_FOAF/XML_FOAF_Parser.html#method_parse">_parse</a></li>
@@ -194,7 +191,7 @@ Source Location: XML/FOAF/Parser.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a51">51</a>]<br />
+[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a53">53</a>]<br />
 FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will return multiple elements  into the result Array, those that start with _get will return only a single element</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -225,8 +222,8 @@ FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will
 <div class="tags">
 	<a name="var$agent_nodes"></a>
 	<p></p>
-	<h4>$agent_nodes = <span class="value"></span></h4>
-	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a81">81</a>]</p>
+	<h4>$agent_nodes = <span class="value">array()</span></h4>
+	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a83">83</a>]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -250,7 +247,7 @@ FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will
 	<a name="var$foaf"></a>
 	<p></p>
 	<h4>$foaf = <span class="value"></span></h4>
-	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a69">69</a>]</p>
+	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a71">71</a>]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -274,7 +271,7 @@ FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will
 	<a name="var$foaf_data"></a>
 	<p></p>
 	<h4>$foaf_data = <span class="value"></span></h4>
-	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a63">63</a>]</p>
+	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a65">65</a>]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -298,7 +295,7 @@ FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will
 	<a name="var$foaf_xml"></a>
 	<p></p>
 	<h4>$foaf_xml = <span class="value">&nbsp;''</span></h4>
-	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a57">57</a>]</p>
+	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a59">59</a>]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -321,8 +318,8 @@ FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will
 	<div class="top">[ <a href="#top">Top</a> ]</div><br />
 	<a name="var$known_nodes"></a>
 	<p></p>
-	<h4>$known_nodes = <span class="value"></span></h4>
-	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a87">87</a>]</p>
+	<h4>$known_nodes = <span class="value">array()</span></h4>
+	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a89">89</a>]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -346,7 +343,7 @@ FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will
 	<a name="var$rdf_parser"></a>
 	<p></p>
 	<h4>$rdf_parser = <span class="value"></span></h4>
-	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a75">75</a>]</p>
+	<p>[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a77">77</a>]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -375,7 +372,7 @@ FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will
 <div class="tags">
   <hr />
 	<a name="methodXML_FOAF_Parser"></a>
-	<h3>constructor XML_FOAF_Parser <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a102">102</a>]</span></h3>
+	<h3>constructor XML_FOAF_Parser <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a104">104</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -393,7 +390,7 @@ FOAF Parser<br /><br /><p>Individual element parsers that start with _fetch will
   </div>
   <hr />
 	<a name="methodparseFromFile"></a>
-	<h3>method parseFromFile <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a129">129</a>]</span></h3>
+	<h3>method parseFromFile <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a131">131</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -437,7 +434,7 @@ $use_include_path = false])</code>
   </div>
   <hr />
 	<a name="methodparseFromMem"></a>
-	<h3>method parseFromMem <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a143">143</a>]</span></h3>
+	<h3>method parseFromMem <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a145">145</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -475,7 +472,7 @@ $mem)</code>
   </div>
   <hr />
 	<a name="methodparseFromURI"></a>
-	<h3>method parseFromURI <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a115">115</a>]</span></h3>
+	<h3>method parseFromURI <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a117">117</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -513,7 +510,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="methodtoArray"></a>
-	<h3>method toArray <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a811">811</a>]</span></h3>
+	<h3>method toArray <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a922">922</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -540,12 +537,13 @@ $uri)</code>
   </div>
   <hr />
 	<a name="methodtoHTML"></a>
-	<h3>method toHTML <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a823">823</a>]</span></h3>
+	<h3>method toHTML <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a935">935</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>string toHTML(
-)</code>
+mixed
+&$foaf_data)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -555,6 +553,9 @@ $uri)</code>
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Write code to return an HTML table</td>
   </tr>
 </table>
 </div>
@@ -567,7 +568,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="methodtoObject"></a>
-	<h3>method toObject <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a795">795</a>]</span></h3>
+	<h3>method toObject <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a906">906</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -583,6 +584,9 @@ $uri)</code>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Make it work!</td>
+  </tr>
 </table>
 </div>
 <br /><br />
@@ -594,7 +598,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchAgent"></a>
-	<h3>method _fetchAgent <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a181">181</a>]</span></h3>
+	<h3>method _fetchAgent <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a219">219</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -621,7 +625,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchAimChatID"></a>
-	<h3>method _fetchAimChatID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a474">474</a>]</span></h3>
+	<h3>method _fetchAimChatID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a436">436</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -648,7 +652,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchCurrentProject"></a>
-	<h3>method _fetchCurrentProject <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a689">689</a>]</span></h3>
+	<h3>method _fetchCurrentProject <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a708">708</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -675,7 +679,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchDcDescription"></a>
-	<h3>method _fetchDcDescription <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a780">780</a>]</span></h3>
+	<h3>method _fetchDcDescription <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a807">807</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -702,7 +706,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchDcTitle"></a>
-	<h3>method _fetchDcTitle <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a765">765</a>]</span></h3>
+	<h3>method _fetchDcTitle <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a789">789</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -729,7 +733,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchDepiction"></a>
-	<h3>method _fetchDepiction <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a267">267</a>]</span></h3>
+	<h3>method _fetchDepiction <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a288">288</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -756,7 +760,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchFundedBy"></a>
-	<h3>method _fetchFundedBy <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a296">296</a>]</span></h3>
+	<h3>method _fetchFundedBy <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a297">297</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -782,8 +786,35 @@ $uri)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="method_fetchHoldsAccount"></a>
+	<h3>method _fetchHoldsAccount <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a472">472</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _fetchHoldsAccount(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Finds all foaf:onlineAccount's and inserts them into the result Array<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+
+
+
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="method_fetchHomepage"></a>
-	<h3>method _fetchHomepage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a546">546</a>]</span></h3>
+	<h3>method _fetchHomepage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a565">565</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -810,7 +841,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchIcqChatID"></a>
-	<h3>method _fetchIcqChatID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a483">483</a>]</span></h3>
+	<h3>method _fetchIcqChatID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a445">445</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -837,7 +868,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchImg"></a>
-	<h3>method _fetchImg <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a635">635</a>]</span></h3>
+	<h3>method _fetchImg <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a654">654</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -864,7 +895,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchInterest"></a>
-	<h3>method _fetchInterest <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a718">718</a>]</span></h3>
+	<h3>method _fetchInterest <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a737">737</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -891,7 +922,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchJabberID"></a>
-	<h3>method _fetchJabberID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a465">465</a>]</span></h3>
+	<h3>method _fetchJabberID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a427">427</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -918,7 +949,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchLogo"></a>
-	<h3>method _fetchLogo <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a325">325</a>]</span></h3>
+	<h3>method _fetchLogo <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a306">306</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -945,7 +976,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchMade"></a>
-	<h3>method _fetchMade <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a564">564</a>]</span></h3>
+	<h3>method _fetchMade <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a583">583</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -972,7 +1003,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchMbox"></a>
-	<h3>method _fetchMbox <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a435">435</a>]</span></h3>
+	<h3>method _fetchMbox <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a397">397</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -999,7 +1030,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchMboxSha1Sum"></a>
-	<h3>method _fetchMboxSha1Sum <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a444">444</a>]</span></h3>
+	<h3>method _fetchMboxSha1Sum <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a406">406</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1026,7 +1057,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchMember"></a>
-	<h3>method _fetchMember <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a729">729</a>]</span></h3>
+	<h3>method _fetchMember <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a750">750</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1039,6 +1070,9 @@ $uri)</code>
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Need to figure out how to point to an agent in the foaf_data :)</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
   </tr>
@@ -1053,7 +1087,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchMsnChatID"></a>
-	<h3>method _fetchMsnChatID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a501">501</a>]</span></h3>
+	<h3>method _fetchMsnChatID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a463">463</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1080,7 +1114,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchMyersBriggs"></a>
-	<h3>method _fetchMyersBriggs <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a644">644</a>]</span></h3>
+	<h3>method _fetchMyersBriggs <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a663">663</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1107,7 +1141,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchNick"></a>
-	<h3>method _fetchNick <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a405">405</a>]</span></h3>
+	<h3>method _fetchNick <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a345">345</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1133,116 +1167,8 @@ $uri)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="method_fetchOnlineAccount"></a>
-	<h3>method _fetchOnlineAccount <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a510">510</a>]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void _fetchOnlineAccount(
-)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Finds all foaf:onlineAccount's and inserts them into the result Array<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-
-
-
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="method_fetchOnlineChatAccount"></a>
-	<h3>method _fetchOnlineChatAccount <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a519">519</a>]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void _fetchOnlineChatAccount(
-)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Finds all foaf:onlineChatAccount's and inserts them into the result Array<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-
-
-
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="method_fetchOnlineEcommerceAccount"></a>
-	<h3>method _fetchOnlineEcommerceAccount <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a537">537</a>]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void _fetchOnlineEcommerceAccount(
-)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Finds all foaf:onlineEcommerceAccount's and inserts them into the result Array<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-
-
-
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="method_fetchOnlineGamingAccount"></a>
-	<h3>method _fetchOnlineGamingAccount <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a528">528</a>]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void _fetchOnlineGamingAccount(
-)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Finds all foaf:onlineGamingAccount's and inserts them into the result Array<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-
-
-
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
 	<a name="method_fetchPage"></a>
-	<h3>method _fetchPage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a354">354</a>]</span></h3>
+	<h3>method _fetchPage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a315">315</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1269,7 +1195,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchPastProject"></a>
-	<h3>method _fetchPastProject <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a698">698</a>]</span></h3>
+	<h3>method _fetchPastProject <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a717">717</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1296,7 +1222,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchPhone"></a>
-	<h3>method _fetchPhone <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a426">426</a>]</span></h3>
+	<h3>method _fetchPhone <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a388">388</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1322,8 +1248,58 @@ $uri)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="method_fetchProperty"></a>
+	<h3>method _fetchProperty <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a828">828</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _fetchProperty(
+$xmlns
+$xmlns, $property
+$property, $obj_value
+$obj_value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Fetch a FOAF Property with multiple values<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+
+
+
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$xmlns&nbsp;&nbsp;</td>
+        <td><b>$xmlns</b>&nbsp;&nbsp;</td>
+        <td>string XML Namespace URI</td>
+      </tr>
+          <tr>
+        <td class="type">$property&nbsp;&nbsp;</td>
+        <td><b>$property</b>&nbsp;&nbsp;</td>
+        <td>string XML Element name</td>
+      </tr>
+          <tr>
+        <td class="type">$obj_value&nbsp;&nbsp;</td>
+        <td><b>$obj_value</b>&nbsp;&nbsp;</td>
+        <td>string Triple's &quot;Object&quot; value (label or uri typically)</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="method_fetchPublication"></a>
-	<h3>method _fetchPublication <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a680">680</a>]</span></h3>
+	<h3>method _fetchPublication <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a699">699</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1350,7 +1326,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchSchoolHomepage"></a>
-	<h3>method _fetchSchoolHomepage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a671">671</a>]</span></h3>
+	<h3>method _fetchSchoolHomepage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a690">690</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1377,7 +1353,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchSeeAlso"></a>
-	<h3>method _fetchSeeAlso <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a752">752</a>]</span></h3>
+	<h3>method _fetchSeeAlso <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a776">776</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1404,7 +1380,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchTheme"></a>
-	<h3>method _fetchTheme <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a384">384</a>]</span></h3>
+	<h3>method _fetchTheme <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a324">324</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1431,7 +1407,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchWeblog"></a>
-	<h3>method _fetchWeblog <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a555">555</a>]</span></h3>
+	<h3>method _fetchWeblog <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a574">574</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1458,7 +1434,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchWorkInfoHomepage"></a>
-	<h3>method _fetchWorkInfoHomepage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a662">662</a>]</span></h3>
+	<h3>method _fetchWorkInfoHomepage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a681">681</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1485,7 +1461,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchWorkplaceHomepage"></a>
-	<h3>method _fetchWorkplaceHomepage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a653">653</a>]</span></h3>
+	<h3>method _fetchWorkplaceHomepage <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a672">672</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1512,7 +1488,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_fetchYahooChatID"></a>
-	<h3>method _fetchYahooChatID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a492">492</a>]</span></h3>
+	<h3>method _fetchYahooChatID <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a454">454</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1539,7 +1515,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getBasedNear"></a>
-	<h3>method _getBasedNear <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a707">707</a>]</span></h3>
+	<h3>method _getBasedNear <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a726">726</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1566,7 +1542,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getFamilyName"></a>
-	<h3>method _getFamilyName <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a614">614</a>]</span></h3>
+	<h3>method _getFamilyName <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a633">633</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1593,7 +1569,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getFirstName"></a>
-	<h3>method _getFirstName <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a590">590</a>]</span></h3>
+	<h3>method _getFirstName <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a609">609</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1620,7 +1596,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getGeekcode"></a>
-	<h3>method _getGeekcode <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a578">578</a>]</span></h3>
+	<h3>method _getGeekcode <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a597">597</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1647,7 +1623,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getGender"></a>
-	<h3>method _getGender <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a456">456</a>]</span></h3>
+	<h3>method _getGender <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a418">418</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1674,7 +1650,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getGivenName"></a>
-	<h3>method _getGivenName <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a417">417</a>]</span></h3>
+	<h3>method _getGivenName <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a379">379</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1701,7 +1677,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getMembershipClass"></a>
-	<h3>method _getMembershipClass <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a741">741</a>]</span></h3>
+	<h3>method _getMembershipClass <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a765">765</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1714,6 +1690,12 @@ $uri)</code>
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>figure out how to point to an agent in the foaf_data</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Use http://xmlns.com/foaf/0.1/#term_Group for reference (second example)</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
   </tr>
@@ -1728,7 +1710,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getName"></a>
-	<h3>method _getName <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a238">238</a>]</span></h3>
+	<h3>method _getName <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a279">279</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1755,7 +1737,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getPlan"></a>
-	<h3>method _getPlan <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a626">626</a>]</span></h3>
+	<h3>method _getPlan <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a645">645</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1781,8 +1763,58 @@ $uri)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="method_getProperty"></a>
+	<h3>method _getProperty <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a868">868</a>]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _getProperty(
+$xmlns
+$xmlns, $property
+$property, $obj_value
+$obj_value)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Fetch a FOAF Property with a single value<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>private</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+
+
+
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$xmlns&nbsp;&nbsp;</td>
+        <td><b>$xmlns</b>&nbsp;&nbsp;</td>
+        <td>string XML Namespace URI</td>
+      </tr>
+          <tr>
+        <td class="type">$property&nbsp;&nbsp;</td>
+        <td><b>$property</b>&nbsp;&nbsp;</td>
+        <td>string XML Element name</td>
+      </tr>
+          <tr>
+        <td class="type">$obj_value&nbsp;&nbsp;</td>
+        <td><b>$obj_value</b>&nbsp;&nbsp;</td>
+        <td>string Triple's &quot;Object&quot; value (label or uri typically)</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="method_getSurname"></a>
-	<h3>method _getSurname <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a602">602</a>]</span></h3>
+	<h3>method _getSurname <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a621">621</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1809,7 +1841,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_getTitle"></a>
-	<h3>method _getTitle <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a396">396</a>]</span></h3>
+	<h3>method _getTitle <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a336">336</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1836,7 +1868,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method_parse"></a>
-	<h3>method _parse <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a158">158</a>]</span></h3>
+	<h3>method _parse <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a160">160</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1863,7 +1895,7 @@ $uri)</code>
   </div>
   <hr />
 	<a name="method__construct"></a>
-	<h3>method __construct <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a93">93</a>]</span></h3>
+	<h3>method __construct <span class="smalllinenumber">[line <a href="..//__filesource/fsource_XML_FOAF__FOAF_Parser.php.html#a95">95</a>]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1892,7 +1924,7 @@ $uri)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Mon, 12 Jan 2004 18:26:23 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.3</a>
+		    Documentation generated on Thu, 15 Jan 2004 19:03:16 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.2.3</a>
 	      </div>
       </td></tr></table>
     </td>
