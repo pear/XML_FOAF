@@ -1490,7 +1490,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
         $dc_title_resource = new Resource(XML_FOAF_DC_NS . 'title');
         $dc_titles = $this->foaf->find(null,$dc_title_resource,null);
         foreach ($dc_titles->triples as $title) {
-        	$foaf_data['dc']['title'][$title->subj->uri] = $title->obj->label;
+        	$this->foaf_data['dc']['title'][$title->subj->uri] = $title->obj->label;
         }
     }
 
@@ -1508,7 +1508,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
         $dc_description_resource = new Resource(XML_FOAF_DC_NS . 'description');
         $dc_descriptions = $this->foaf->find(null,$dc_description_resource,null);
         foreach ($dc_descriptions->triples as $description) {
-        	$foaf_data['dc']['description'][$description->subj->uri] = $description->obj->label;
+        	$this->foaf_data['dc']['description'][$description->subj->uri] = $description->obj->label;
         }
     }
 
@@ -1627,9 +1627,84 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      * @return string
      */
 
-    function toHTML()
+    function toHTML(&$foaf_data)
     {
-
+    	require_once 'Validate.php';
+		$table = '<table>';
+		foreach ($foaf_data as $key => $agent) {
+			if (isset ($agent['type'])) {
+				$table .= '<tr><th colspan="2" class="xml_foaf_' .strtolower($agent['type']). '><h1 class="xml_foaf">';
+				if (isset($agent['name'])) {
+					$table .= $agent['name'];
+				} else {
+					$name = NULL;
+					if (isset($agent['firstname'])) {
+						$name .= $agent['firstname'];
+					} elseif (isset($agent['givenname'])) {
+						$name .= $agent['givenname'];
+					}
+					if (isset($agent['surname'])) {
+						$name .= ' ' .$agent['surname'];
+					} elseif (isset($agent['familyname'])) {
+						$name .= ' ' .$agent['familyname'];
+					}
+					if (is_null($name)) {
+						$name = $agent['node'];
+					}
+					$table .= $name;
+				}
+				$table .= '</h1></th></tr>';
+				unset($agent['node']);
+				foreach ($agent as $key => $property) {
+					$table .= '<tr><th>' .$key. '</th><td>';
+					if (!is_array($property)) { 
+						if (Validate::uri($property,array('allowed_schemes' => array('http','ftp')))) {
+							$table .= '<a href="' .$property. '">' .$property. '</a></td></tr>';
+						} else {
+							$table .= $property. '</td></tr>';
+						}
+					} else {
+						if ($key == 'knows') {
+							$property =  array ($property);
+							$table .= $this->toHTML($property);
+						} elseif ($key != 'holdsaccount') {
+							$table .= '<ul>';
+							foreach ($property as $child) {
+								if (Validate::uri($child,array('allowed_schemes' => array('http','ftp')))) {
+									$table .= '<li>';
+									if (isset($this->foaf_data['dc']['title'][$child])) {
+										$table .= '<h2 class="xml_foaf"><a href="' .$child. '">';
+										$table .= $this->foaf_data['dc']['title'][$child];
+										$table .= '</a></h2>';
+									} else {
+										$table .= '<a href="' .$child. '">' .$child. '</a>';
+									}
+									if (isset($this->foaf_data['dc']['description'][$child])) {
+										$table .= '<p class="xml_foaf">' .$this->foaf_data['dc']['description'][$child]. '</p>';
+									}
+									$table .= '</li>';
+								} else {
+									$table .= '<li>' .$child. '</li>';
+								}
+							}
+							$table .= '</ul>';
+						} else {
+							foreach ($property as $account) {
+								$table .= '<table>';
+								foreach ($account as $key => $data) {
+									$table .= '<tr><th>' .$key. '</th><td>' .$data. '</td></tr>';
+								}
+								$table .= '</table>';
+							}
+						}									
+					}
+				}
+			} else {
+				continue;
+			}
+		}	
+		$table .= '</table>';
+		return $table;
     }
 }
 
