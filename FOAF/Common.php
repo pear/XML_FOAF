@@ -32,7 +32,7 @@
  * @version 0.1
  * @copyright Copyright 2003 Davey Shafik and Synaptic Media. All Rights Reserved.
  */
-	
+
 class XML_FOAF_Common {
 
     /**
@@ -42,8 +42,8 @@ class XML_FOAF_Common {
      * @access public
      * @return boolean
      */
-	
- 	function isAllowedForAgent($property)
+
+    function isAllowedForAgent($property)
     {
         $property = strtolower($property);
         $common = array (
@@ -98,5 +98,5 @@ class XML_FOAF_Common {
             return false;
         }
     }
-    
+
 }
