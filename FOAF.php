@@ -24,6 +24,8 @@
  * @category XML
  */
 
+require_once 'XML/FOAF/Common.php';
+ 
 /**
  * FOAF Creator
  *
@@ -35,7 +37,7 @@
  * @todo Implement PEAR_Error handling
  */
 
-class XML_FOAF 
+class XML_FOAF extends XML_FOAF_Common
 {
 
     var $foaf = null;
@@ -174,11 +176,13 @@ class XML_FOAF
      * @link http://xmlns.com/foaf/0.1/#term_page FOAF Specification - foaf:page
      */
 
-    function addPage($document_uri,$title,$description = null)
+    function addPage($document_uri,$title = null,$description = null)
     {
         $page =& $this->foaf->addChild('foaf:page');
         $document =& $page->addChild('foaf:Document', '', array('rdf:about' => $document_uri));
-        $document->addChild('dc:title', $title);
+        if(!is_null($title)) {
+        	$document->addChild('dc:title', $title);
+        }
         if(!is_null($description)) {
         	$document->addChild('dc:description', $description);
         }
@@ -986,70 +990,6 @@ class XML_FOAF
     			$this->foaf->addChild($xml_tree);
     		}
     	}
-    }
-
-    /**
-     * Check if a property is allows for the current foaf:Agent
-     *
-     * @param string $property name of the Property to check. Without a namespace
-     * @access public
-     * @return boolean
-     */
-
-    function isAllowedForAgent($property)
-    {
-        $property = strtolower($property);
-        $common = array (
-                    'name',
-                    'maker',
-                    'depiction',
-                    'fundedby',
-                    'logo',
-                    'page',
-                    'theme',
-                    'dnachecksum',
-                    'title',
-                    'nick',
-                    'givenname',
-                    'phone',
-                    'mbox',
-                    'mbox_sha1sum',
-                    'gender',
-                    'jabberid',
-                    'aimchatid',
-                    'icqchatid',
-                    'yahoochatid',
-                    'msnchatid',
-                    'homepage',
-                    'weblog',
-                    'made',
-                    'holdsaccount');
-        $person = array (
-                    'geekcode',
-                    'interest',
-                    'firstname',
-                    'surname',
-                    'family_name',
-                    'plan',
-                    'img',
-                    'myersbriggs',
-                    'workplacehomepage',
-                    'workinfohomepage',
-                    'schoolhomepage',
-                    'knows',
-                    'publications',
-                    'currentproject',
-                    'pastproject',
-                    'based_near');
-        $organization = array();
-        $group = array(
-                    'member',
-                    'membershipclass');
-        if (in_array($property,$common) || in_array($property, ${$this->agent})) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
