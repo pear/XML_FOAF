@@ -3,7 +3,7 @@
     // Main FOAF
     $foaf = new XML_FOAF();
 
-    $foaf->newAgent('person');
+    $foaf->newAgent('organization');
     $foaf->setName('Davey Shafik');
     $foaf->setTitle('Mr');
     $foaf->setFirstName('Davey');
@@ -43,9 +43,14 @@
     // Add to Main FOAF
     $foaf->addKnows($libby);
 
-    echo "<pre>" .htmlentities($foaf->get()). "</pre>";
-    echo "<hr />";
-    show_source(__FILE__);
+    if (!isset($_GET['xml'])) {
+    	echo "<pre>" .htmlentities($foaf->get()). "</pre>";
+    	echo "<hr />";
+    	show_source(__FILE__);
+    } else {
+    	header('Content-Type: text/xml');
+    	$foaf->dump();
+    }
 
     /* Output
     <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
