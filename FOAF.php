@@ -1043,7 +1043,7 @@ class XML_FOAF extends XML_FOAF_Common
     function toXML($without_rdf = false)
     {
         if ($without_rdf == false) {
-            $foaf = "<rdf:RDF " .$this->_getXmlns(). ">\n" .$this->foaf->get(). "\n</rdf:RDF>";
+            $foaf = "<rdf:RDF" .$this->_getXmlns(). ">\n" .$this->foaf->get(). "</rdf:RDF>";
         } else {
             $foaf = $this->foaf->get();
         }
