@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
 <package version="1.0">
-    <!-- $Id: package.xml,v 1.1 2004-01-07 13:03:05 davey Exp $ -->
+    <!-- $Id: package.xml,v 1.2 2004-01-07 13:10:49 davey Exp $ -->
     <name>XML_FOAF</name>
     <summary>Provides the ability to manipulate FOAF RDF/XML</summary>
     <description>
@@ -20,7 +20,7 @@
     </maintainers>
     <release>
         <version>0.1</version>
-        <date>2003-01-07</date>
+        <date>2004-01-07</date>
         <state>alpha</state>
         <notes>
             Initial PEAR Release
