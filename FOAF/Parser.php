@@ -265,7 +265,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
             $i += 1;
         }
         if (!is_array($this->known_nodes)) {
-        	$this->known_nodes = array();
+            $this->known_nodes = array();
         }
         return $agents;
     }
@@ -819,24 +819,24 @@ class XML_FOAF_Parser extends XML_FOAF_Common
         $rdf_type_resource = new Resource(XML_FOAF_RDF_NS . 'type');
         $rdf_types = $this->foaf->find(null,$rdf_type_resource,null);
         foreach ($holds_accounts->triples as $holds_account) {
-        	foreach ($account_names->triples as $account_name) {
-        		if ($account_name->subj->uri == $holds_account->obj->uri) {
-        		 	$accounts[$account_name->subj->uri]['accountname'] = $account_name->obj->label;
-        		}
-        	}
-        	foreach ($account_service_homepages->triples as $account_service_homepage) {
-        		if ($account_service_homepage->subj->uri == $holds_account->obj->uri) {
-        			$accounts[$account_service_homepage->subj->uri]['accountservicehompage'] = $account_service_homepage->obj->uri;
-        		}
-        	}
-        	foreach ($rdf_types->triples as $rdf_type) {
-        		if ($rdf_type->subj->uri == $holds_account->obj->uri) {
-        			$account_type = pathinfo($rdf_type->obj->uri);
-        			$accounts[$rdf_type->subj->uri]['type'] = $account_type['basename'];
-        		}
-        	}
+            foreach ($account_names->triples as $account_name) {
+                if ($account_name->subj->uri == $holds_account->obj->uri) {
+                    $accounts[$account_name->subj->uri]['accountname'] = $account_name->obj->label;
+                }
+            }
+            foreach ($account_service_homepages->triples as $account_service_homepage) {
+                if ($account_service_homepage->subj->uri == $holds_account->obj->uri) {
+                    $accounts[$account_service_homepage->subj->uri]['accountservicehompage'] = $account_service_homepage->obj->uri;
+                }
+            }
+            foreach ($rdf_types->triples as $rdf_type) {
+                if ($rdf_type->subj->uri == $holds_account->obj->uri) {
+                    $account_type = pathinfo($rdf_type->obj->uri);
+                    $accounts[$rdf_type->subj->uri]['type'] = $account_type['basename'];
+                }
+            }
         }
-        
+
         $online_account_resource = new Resource(XML_FOAF_NS . 'OnlineAccount');
         $online_accounts = $this->foaf->find(null,null,$online_account_resource);
         $online_chat_account_resource = new Resource(XML_FOAF_NS .'OnlineChatAccount');
@@ -845,56 +845,56 @@ class XML_FOAF_Parser extends XML_FOAF_Common
         $online_gaming_accounts = $this->foaf->find(null,null,$online_gaming_account_resource);
         $online_ecommerce_account_resource = new Resource(XML_FOAF_NS . 'OnlineEcommerceAccount');
         $online_ecommerce_accounts = $this->foaf->find(null,null,$online_ecommerce_account_resource);
-        
+
         foreach ($online_accounts->triples as $account_type) {
-        	if (!isset($accounts[$account_type->subj->uri]['type'])) {
-        		$accounts[$account_type->subj->uri]['type'] = 'OnlineAccount';
-        	}
+            if (!isset($accounts[$account_type->subj->uri]['type'])) {
+                $accounts[$account_type->subj->uri]['type'] = 'OnlineAccount';
+            }
         }
-        
+
         foreach ($online_chat_accounts->triples as $account_type) {
-        	if (!isset($accounts[$account_type->subj->uri]['type'])) {
-        		$accounts[$account_type->subj->uri]['type'] = 'OnlineChatAccount';
-        	}
+            if (!isset($accounts[$account_type->subj->uri]['type'])) {
+                $accounts[$account_type->subj->uri]['type'] = 'OnlineChatAccount';
+            }
         }
-        
+
         foreach ($online_gaming_accounts->triples as $account_type) {
-        	if (!isset($accounts[$account_type->subj->uri]['type'])) {
-        		$accounts[$account_type->subj->uri]['type'] = 'OnlineGamingAccount';
-        	}
+            if (!isset($accounts[$account_type->subj->uri]['type'])) {
+                $accounts[$account_type->subj->uri]['type'] = 'OnlineGamingAccount';
+            }
         }
-        
+
         foreach ($online_ecommerce_accounts->triples as $account_type) {
-        	if (!isset($accounts[$account_type->subj->uri]['type'])) {
-        		$accounts[$account_type->subj->uri]['type'] = 'OnlineEcommerceAccount';
-        	}
-        }       	
-        
-        foreach ($holds_accounts->triples as $holds_account) {
-        	$agent_accounts[$holds_account->subj->uri][] = $accounts[$holds_account->obj->uri];
+            if (!isset($accounts[$account_type->subj->uri]['type'])) {
+                $accounts[$account_type->subj->uri]['type'] = 'OnlineEcommerceAccount';
+            }
         }
-        
-	    if (isset($agent_accounts)) {
-	        foreach ($agent_accounts as $node => $accounts) {
-	        	if (in_array($node,$this->agent_nodes)) {
-	        		foreach ($this->foaf_data as $key => $value) {
-	        			if ($value['node'] == $node) {
-	        				$this->foaf_data[$key]['holdsaccount'] = $agent_accounts[$node];
-	        			}
-	        			break;
-	        		}
-	        	} elseif (in_array($node,$this->known_nodes)) {
-	        		foreach ($this->foaf_data as $agent_key => $agent) {
-	                    foreach ($agent['knows'] as $holds_account_key => $holds_account_array) {
-	                        if (isset($holds_account_array['node']) && ($holds_account_array['node'] == $node)) {
-	                            $this->foaf_data[$agent_key]['knows'][$holds_account_key]['holdsaccount'] = $agent_accounts[$node];
-	                            break 2;
-	                        }
-	                    }
-	                }
-	        	}
-	        }
-	    }
+
+        foreach ($holds_accounts->triples as $holds_account) {
+            $agent_accounts[$holds_account->subj->uri][] = $accounts[$holds_account->obj->uri];
+        }
+
+        if (isset($agent_accounts)) {
+            foreach ($agent_accounts as $node => $accounts) {
+                if (in_array($node,$this->agent_nodes)) {
+                    foreach ($this->foaf_data as $key => $value) {
+                        if ($value['node'] == $node) {
+                            $this->foaf_data[$key]['holdsaccount'] = $agent_accounts[$node];
+                        }
+                        break;
+                    }
+                } elseif (in_array($node,$this->known_nodes)) {
+                    foreach ($this->foaf_data as $agent_key => $agent) {
+                        foreach ($agent['knows'] as $holds_account_key => $holds_account_array) {
+                            if (isset($holds_account_array['node']) && ($holds_account_array['node'] == $node)) {
+                                $this->foaf_data[$agent_key]['knows'][$holds_account_key]['holdsaccount'] = $agent_accounts[$node];
+                                break 2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -903,8 +903,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchHomepage()
     {
-		$homepage_resource = new Resource(XML_FOAF_NS . 'homepage');
-		$homepages = $this->foaf->find(null,$homepage_resource,null);
+        $homepage_resource = new Resource(XML_FOAF_NS . 'homepage');
+        $homepages = $this->foaf->find(null,$homepage_resource,null);
         foreach ($homepages->triples as $homepage) {
             if (in_array($homepage->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -932,8 +932,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchWeblog()
     {
-		$weblog_resource = new Resource(XML_FOAF_NS . 'weblog');
-		$weblogs = $this->foaf->find(null,$weblog_resource,null);
+        $weblog_resource = new Resource(XML_FOAF_NS . 'weblog');
+        $weblogs = $this->foaf->find(null,$weblog_resource,null);
         foreach ($weblogs->triples as $weblog) {
             if (in_array($weblog->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -961,8 +961,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchMade()
     {
-		$made_resource = new Resource(XML_FOAF_NS . 'made');
-		$mades = $this->foaf->find(null,$made_resource,null);
+        $made_resource = new Resource(XML_FOAF_NS . 'made');
+        $mades = $this->foaf->find(null,$made_resource,null);
         foreach ($mades->triples as $made) {
             if (in_array($made->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -995,8 +995,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _getGeekcode()
     {
-		$geekcode_resource = new Resource(XML_FOAF_NS . 'geekcode');
-		$geekcodes = $this->foaf->find(null,$geekcode_resource,null);
+        $geekcode_resource = new Resource(XML_FOAF_NS . 'geekcode');
+        $geekcodes = $this->foaf->find(null,$geekcode_resource,null);
         foreach ($geekcodes->triples as $geekcode) {
             if (in_array($geekcode->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1027,8 +1027,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _getFirstName()
     {
-		$first_name_resource = new Resource(XML_FOAF_NS . 'firstName');
-		$first_names = $this->foaf->find(null,$first_name_resource,null);
+        $first_name_resource = new Resource(XML_FOAF_NS . 'firstName');
+        $first_names = $this->foaf->find(null,$first_name_resource,null);
         foreach ($first_names->triples as $first_name) {
             if (in_array($first_name->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1059,8 +1059,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _getSurname()
     {
-		$surname_resource = new Resource(XML_FOAF_NS . 'surname');
-		$surnames = $this->foaf->find(null,$surname_resource,null);
+        $surname_resource = new Resource(XML_FOAF_NS . 'surname');
+        $surnames = $this->foaf->find(null,$surname_resource,null);
         foreach ($surnames->triples as $surname) {
             if (in_array($surname->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1091,8 +1091,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _getFamilyName()
     {
-		$family_name_resource = new Resource(XML_FOAF_NS . 'familyName');
-		$family_names = $this->foaf->find(null,$family_name_resource,null);
+        $family_name_resource = new Resource(XML_FOAF_NS . 'familyName');
+        $family_names = $this->foaf->find(null,$family_name_resource,null);
         foreach ($family_names->triples as $family_name) {
             if (in_array($family_name->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1123,8 +1123,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _getPlan()
     {
-		$plan_resource = new Resource(XML_FOAF_NS . 'plan');
-		$plans = $this->foaf->find(null,$plan_resource,null);
+        $plan_resource = new Resource(XML_FOAF_NS . 'plan');
+        $plans = $this->foaf->find(null,$plan_resource,null);
         foreach ($plans->triples as $plan) {
             if (in_array($plan->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1152,8 +1152,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchImg()
     {
-		$img_resource = new Resource(XML_FOAF_NS . 'img');
-		$imgs = $this->foaf->find(null,$img_resource,null);
+        $img_resource = new Resource(XML_FOAF_NS . 'img');
+        $imgs = $this->foaf->find(null,$img_resource,null);
         foreach ($imgs->triples as $img) {
             if (in_array($img->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1181,8 +1181,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchMyersBriggs()
     {
-		$meyers_briggs_resource = new Resource(XML_FOAF_NS . 'meyersBriggs');
-		$meyers_briggss = $this->foaf->find(null,$meyers_briggs_resource,null);
+        $meyers_briggs_resource = new Resource(XML_FOAF_NS . 'meyersBriggs');
+        $meyers_briggss = $this->foaf->find(null,$meyers_briggs_resource,null);
         foreach ($meyers_briggss->triples as $meyers_briggs) {
             if (in_array($meyers_briggs->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1210,8 +1210,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchWorkplaceHomepage()
     {
-		$workplace_homepage_resource = new Resource(XML_FOAF_NS . 'workplaceHomepage');
-		$workplace_homepages = $this->foaf->find(null,$workplace_homepage_resource,null);
+        $workplace_homepage_resource = new Resource(XML_FOAF_NS . 'workplaceHomepage');
+        $workplace_homepages = $this->foaf->find(null,$workplace_homepage_resource,null);
         foreach ($workplace_homepages->triples as $workplace_homepage) {
             if (in_array($workplace_homepage->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1239,8 +1239,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchWorkInfoHomepage()
     {
-		$work_info_homepage_resource = new Resource(XML_FOAF_NS . 'workInfoHomepage');
-		$work_info_homepages = $this->foaf->find(null,$work_info_homepage_resource,null);
+        $work_info_homepage_resource = new Resource(XML_FOAF_NS . 'workInfoHomepage');
+        $work_info_homepages = $this->foaf->find(null,$work_info_homepage_resource,null);
         foreach ($work_info_homepages->triples as $work_info_homepage) {
             if (in_array($work_info_homepage->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1268,8 +1268,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchSchoolHomepage()
     {
-		$school_homepage_resource = new Resource(XML_FOAF_NS . 'schoolHomepage');
-		$school_homepages = $this->foaf->find(null,$school_homepage_resource,null);
+        $school_homepage_resource = new Resource(XML_FOAF_NS . 'schoolHomepage');
+        $school_homepages = $this->foaf->find(null,$school_homepage_resource,null);
         foreach ($school_homepages->triples as $school_homepage) {
             if (in_array($school_homepage->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1297,8 +1297,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchPublication()
     {
-		$publication_resource = new Resource(XML_FOAF_NS . 'publication');
-		$publications = $this->foaf->find(null,$publication_resource,null);
+        $publication_resource = new Resource(XML_FOAF_NS . 'publication');
+        $publications = $this->foaf->find(null,$publication_resource,null);
         foreach ($publications->triples as $publication) {
             if (in_array($publication->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1326,8 +1326,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchCurrentProject()
     {
-		$current_project_resource = new Resource(XML_FOAF_NS . 'currentProject');
-		$current_projects = $this->foaf->find(null,$current_project_resource,null);
+        $current_project_resource = new Resource(XML_FOAF_NS . 'currentProject');
+        $current_projects = $this->foaf->find(null,$current_project_resource,null);
         foreach ($current_projects->triples as $current_project) {
             if (in_array($current_project->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1355,8 +1355,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchPastProject()
     {
-		$past_project_resource = new Resource(XML_FOAF_NS . 'pastProject');
-		$past_projects = $this->foaf->find(null,$past_project_resource,null);
+        $past_project_resource = new Resource(XML_FOAF_NS . 'pastProject');
+        $past_projects = $this->foaf->find(null,$past_project_resource,null);
         foreach ($past_projects->triples as $past_project) {
             if (in_array($past_project->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1395,8 +1395,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchInterest()
     {
-		$interest_resource = new Resource(XML_FOAF_NS . 'interest');
-		$interests = $this->foaf->find(null,$interest_resource,null);
+        $interest_resource = new Resource(XML_FOAF_NS . 'interest');
+        $interests = $this->foaf->find(null,$interest_resource,null);
         foreach ($interests->triples as $interest) {
             if (in_array($interest->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1428,7 +1428,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchMember()
     {
-		
+
     }
 
     /**
@@ -1454,8 +1454,8 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchSeeAlso()
     {
-		$see_also_resource = new Resource(XML_FOAF_RDF_SCHEMA_NS . 'seeAlso');
-		$see_alsos = $this->foaf->find(null,$see_also_resource,null);
+        $see_also_resource = new Resource(XML_FOAF_RDF_SCHEMA_NS . 'seeAlso');
+        $see_alsos = $this->foaf->find(null,$see_also_resource,null);
         foreach ($see_alsos->triples as $see_also) {
             if (in_array($see_also->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $key => $value) {
@@ -1490,7 +1490,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
         $dc_title_resource = new Resource(XML_FOAF_DC_NS . 'title');
         $dc_titles = $this->foaf->find(null,$dc_title_resource,null);
         foreach ($dc_titles->triples as $title) {
-        	$this->foaf_data['dc']['title'][$title->subj->uri] = $title->obj->label;
+            $this->foaf_data['dc']['title'][$title->subj->uri] = $title->obj->label;
         }
     }
 
@@ -1508,12 +1508,12 @@ class XML_FOAF_Parser extends XML_FOAF_Common
         $dc_description_resource = new Resource(XML_FOAF_DC_NS . 'description');
         $dc_descriptions = $this->foaf->find(null,$dc_description_resource,null);
         foreach ($dc_descriptions->triples as $description) {
-        	$this->foaf_data['dc']['description'][$description->subj->uri] = $description->obj->label;
+            $this->foaf_data['dc']['description'][$description->subj->uri] = $description->obj->label;
         }
     }
 
     /**#@-*/
-    
+
     /**
      * Fetch a FOAF Property with multiple values
      *
@@ -1523,17 +1523,17 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      * @access private
      * @return void
      */
-    
+
     function _fetchProperty($xmlns,$property,$obj_value)
     {
-    	$obj_value = str_lower($obj_value);
-       	$property_resource = new Resource($xmlns . $property);
-		$properties = $this->foaf->find(null,$property_resource,null);
+        $obj_value = str_lower($obj_value);
+        $property_resource = new Resource($xmlns . $property);
+        $properties = $this->foaf->find(null,$property_resource,null);
         foreach ($properties->triples as $triple) {
             if (in_array($triple->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $node_uri => $node_data) {
                     if ($node_data == $triple->subj->uri) {
-                    	$property = strtolower(str_replace('_','',$property));
+                        $property = strtolower(str_replace('_','',$property));
                         $this->foaf_data[$node_uri][$property][] = $triple->obj->{$obj_value};
                     }
                     break;
@@ -1542,7 +1542,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
                 foreach ($this->foaf_data as $agent_key => $agent) {
                     foreach ($agent['knows'] as $node_uri => $node_data) {
                         if (isset($node_data['node']) && ($node_data['node'] == $triple->subj->uri)) {
-                        	$property = strtolower(str_replace('_','',$property));
+                            $property = strtolower(str_replace('_','',$property));
                             $this->foaf_data[$agent_key]['knows'][$node_uri][$property][] = $triple->obj->{$obj_value};
                             break 2;
                         }
@@ -1550,28 +1550,28 @@ class XML_FOAF_Parser extends XML_FOAF_Common
                 }
             }
         }
-	}
-	
-	/**
-	 * Fetch a FOAF Property with a single value
-	 *
-	 * @param $xmlns string XML Namespace URI
-	 * @param $property string XML Element name
-	 * @param $obj_value string Triple's "Object" value (label or uri typically)
-	 * @access private
-	 * @return void
-	 */
-	 
-	function _getProperty($xmlns,$property,$obj_value)
+    }
+
+    /**
+     * Fetch a FOAF Property with a single value
+     *
+     * @param $xmlns string XML Namespace URI
+     * @param $property string XML Element name
+     * @param $obj_value string Triple's "Object" value (label or uri typically)
+     * @access private
+     * @return void
+     */
+
+    function _getProperty($xmlns,$property,$obj_value)
     {
-    	$obj_value = strtolower($obj_value);
-       	$property_resource = new Resource($xmlns . $property);
-		$properties = $this->foaf->find(null,$property_resource,null);
+        $obj_value = strtolower($obj_value);
+        $property_resource = new Resource($xmlns . $property);
+        $properties = $this->foaf->find(null,$property_resource,null);
         foreach ($properties->triples as $triple) {
             if (in_array($triple->subj->uri,$this->agent_nodes)) {
                 foreach ($this->agent_nodes as $node_uri => $node_data) {
                     if ($node_data == $triple->subj->uri) {
-                    	$property = strtolower(str_replace('_','',$property));
+                        $property = strtolower(str_replace('_','',$property));
                         $this->foaf_data[$node_uri][$property] = $triple->obj->{$obj_value};
                     }
                     break;
@@ -1580,7 +1580,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
                 foreach ($this->foaf_data as $agent_key => $agent) {
                     foreach ($agent['knows'] as $node_uri => $node_data) {
                         if (isset($node_data['node']) && ($node_data['node'] == $triple->subj->uri)) {
-                        	$property = strtolower(str_replace('_','',$property));
+                            $property = strtolower(str_replace('_','',$property));
                             $this->foaf_data[$agent_key]['knows'][$node_uri][$property] = $triple->obj->{$obj_value};
                             break 2;
                         }
@@ -1588,7 +1588,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
                 }
             }
         }
-	}
+    }
 
     /**
      * Return parsed FOAF data as an Object
@@ -1629,82 +1629,82 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function toHTML(&$foaf_data)
     {
-    	require_once 'Validate.php';
-		$table = '<table>';
-		foreach ($foaf_data as $key => $agent) {
-			if (isset ($agent['type'])) {
-				$table .= '<tr><th colspan="2" class="xml_foaf_' .strtolower($agent['type']). '><h1 class="xml_foaf">';
-				if (isset($agent['name'])) {
-					$table .= $agent['name'];
-				} else {
-					$name = NULL;
-					if (isset($agent['firstname'])) {
-						$name .= $agent['firstname'];
-					} elseif (isset($agent['givenname'])) {
-						$name .= $agent['givenname'];
-					}
-					if (isset($agent['surname'])) {
-						$name .= ' ' .$agent['surname'];
-					} elseif (isset($agent['familyname'])) {
-						$name .= ' ' .$agent['familyname'];
-					}
-					if (is_null($name)) {
-						$name = $agent['node'];
-					}
-					$table .= $name;
-				}
-				$table .= '</h1></th></tr>';
-				unset($agent['node']);
-				foreach ($agent as $key => $property) {
-					$table .= '<tr><th>' .$key. '</th><td>';
-					if (!is_array($property)) { 
-						if (Validate::uri($property,array('allowed_schemes' => array('http','ftp')))) {
-							$table .= '<a href="' .$property. '">' .$property. '</a></td></tr>';
-						} else {
-							$table .= $property. '</td></tr>';
-						}
-					} else {
-						if ($key == 'knows') {
-							$property =  array ($property);
-							$table .= $this->toHTML($property);
-						} elseif ($key != 'holdsaccount') {
-							$table .= '<ul>';
-							foreach ($property as $child) {
-								if (Validate::uri($child,array('allowed_schemes' => array('http','ftp')))) {
-									$table .= '<li>';
-									if (isset($this->foaf_data['dc']['title'][$child])) {
-										$table .= '<h2 class="xml_foaf"><a href="' .$child. '">';
-										$table .= $this->foaf_data['dc']['title'][$child];
-										$table .= '</a></h2>';
-									} else {
-										$table .= '<a href="' .$child. '">' .$child. '</a>';
-									}
-									if (isset($this->foaf_data['dc']['description'][$child])) {
-										$table .= '<p class="xml_foaf">' .$this->foaf_data['dc']['description'][$child]. '</p>';
-									}
-									$table .= '</li>';
-								} else {
-									$table .= '<li>' .$child. '</li>';
-								}
-							}
-							$table .= '</ul>';
-						} else {
-							foreach ($property as $account) {
-								$table .= '<table>';
-								foreach ($account as $key => $data) {
-									$table .= '<tr><th>' .$key. '</th><td>' .$data. '</td></tr>';
-								}
-								$table .= '</table>';
-							}
-						}									
-					}
-				}
-			} else {
-				continue;
-			}
-		}	
-		$table .= '</table>';
-		return $table;
+        require_once 'Validate.php';
+        $table = '<table>';
+        foreach ($foaf_data as $key => $agent) {
+            if (isset ($agent['type'])) {
+                $table .= '<tr><th colspan="2" class="xml_foaf_' .strtolower($agent['type']). '><h1 class="xml_foaf">';
+                if (isset($agent['name'])) {
+                    $table .= $agent['name'];
+                } else {
+                    $name = NULL;
+                    if (isset($agent['firstname'])) {
+                        $name .= $agent['firstname'];
+                    } elseif (isset($agent['givenname'])) {
+                        $name .= $agent['givenname'];
+                    }
+                    if (isset($agent['surname'])) {
+                        $name .= ' ' .$agent['surname'];
+                    } elseif (isset($agent['familyname'])) {
+                        $name .= ' ' .$agent['familyname'];
+                    }
+                    if (is_null($name)) {
+                        $name = $agent['node'];
+                    }
+                    $table .= $name;
+                }
+                $table .= '</h1></th></tr>';
+                unset($agent['node']);
+                foreach ($agent as $key => $property) {
+                    $table .= '<tr><th>' .$key. '</th><td>';
+                    if (!is_array($property)) {
+                        if (Validate::uri($property,array('allowed_schemes' => array('http','ftp')))) {
+                            $table .= '<a href="' .$property. '">' .$property. '</a></td></tr>';
+                        } else {
+                            $table .= $property. '</td></tr>';
+                        }
+                    } else {
+                        if ($key == 'knows') {
+                            $property =  array ($property);
+                            $table .= $this->toHTML($property);
+                        } elseif ($key != 'holdsaccount') {
+                            $table .= '<ul>';
+                            foreach ($property as $child) {
+                                if (Validate::uri($child,array('allowed_schemes' => array('http','ftp')))) {
+                                    $table .= '<li>';
+                                    if (isset($this->foaf_data['dc']['title'][$child])) {
+                                        $table .= '<h2 class="xml_foaf"><a href="' .$child. '">';
+                                        $table .= $this->foaf_data['dc']['title'][$child];
+                                        $table .= '</a></h2>';
+                                    } else {
+                                        $table .= '<a href="' .$child. '">' .$child. '</a>';
+                                    }
+                                    if (isset($this->foaf_data['dc']['description'][$child])) {
+                                        $table .= '<p class="xml_foaf">' .$this->foaf_data['dc']['description'][$child]. '</p>';
+                                    }
+                                    $table .= '</li>';
+                                } else {
+                                    $table .= '<li>' .$child. '</li>';
+                                }
+                            }
+                            $table .= '</ul>';
+                        } else {
+                            foreach ($property as $account) {
+                                $table .= '<table>';
+                                foreach ($account as $key => $data) {
+                                    $table .= '<tr><th>' .$key. '</th><td>' .$data. '</td></tr>';
+                                }
+                                $table .= '</table>';
+                            }
+                        }
+                    }
+                }
+            } else {
+                continue;
+            }
+        }
+        $table .= '</table>';
+        return $table;
     }
 }
 
