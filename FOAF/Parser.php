@@ -323,7 +323,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function _fetchTheme()
     {
-		$this->_fetchProperty(XML_FOAF_NS, 'theme', 'uri');
+        $this->_fetchProperty(XML_FOAF_NS, 'theme', 'uri');
     }
 
     /**
@@ -356,14 +356,14 @@ class XML_FOAF_Parser extends XML_FOAF_Common
                 }
             } elseif (in_array($nick->subj->uri,$this->known_nodes)) {
                 foreach ($this->foaf_data as $agent_key => $agent) {
-                	if (isset($agent['knows']) && is_array($agent['knows'])) {
-                    	foreach ($agent['knows'] as $nick_key => $nick_array) {
-                        	if (isset($nick_array['node']) && ($nick_array['node'] == $nick->subj->uri)) {
-                            	$this->foaf_data[$agent_key]['knows'][$nick_key]['nick'][] = $nick->obj->label;
-                            	break 2;
-                        	}
-                    	}
-                	}
+                    if (isset($agent['knows']) && is_array($agent['knows'])) {
+                        foreach ($agent['knows'] as $nick_key => $nick_array) {
+                            if (isset($nick_array['node']) && ($nick_array['node'] == $nick->subj->uri)) {
+                                $this->foaf_data[$agent_key]['knows'][$nick_key]['nick'][] = $nick->obj->label;
+                                break 2;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -841,15 +841,15 @@ class XML_FOAF_Parser extends XML_FOAF_Common
                 }
             } elseif (in_array($triple->subj->uri,$this->known_nodes)) {
                 foreach ($this->foaf_data as $agent_key => $agent) {
-                	if (isset($agent['knows']) && is_array($agent['knows'])) {
-                    	foreach ($agent['knows'] as $node_uri => $node_data) {
-                        	if (isset($node_data['node']) && ($node_data['node'] == $triple->subj->uri)) {
-                            	$property = strtolower(str_replace('_','',$property));
-                            	$this->foaf_data[$agent_key]['knows'][$node_uri][$property][] = $triple->obj->{$obj_value};
-                            	break 2;
-                        	}
-                    	}
-                	}
+                    if (isset($agent['knows']) && is_array($agent['knows'])) {
+                        foreach ($agent['knows'] as $node_uri => $node_data) {
+                            if (isset($node_data['node']) && ($node_data['node'] == $triple->subj->uri)) {
+                                $property = strtolower(str_replace('_','',$property));
+                                $this->foaf_data[$agent_key]['knows'][$node_uri][$property][] = $triple->obj->{$obj_value};
+                                break 2;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -881,15 +881,15 @@ class XML_FOAF_Parser extends XML_FOAF_Common
                 }
             } elseif (in_array($triple->subj->uri,$this->known_nodes)) {
                 foreach ($this->foaf_data as $agent_key => $agent) {
-                	if (isset($agent['knows']) && is_array($agent['knows'])) {
-	                    foreach ($agent['knows'] as $node_uri => $node_data) {
-	                        if (isset($node_data['node']) && ($node_data['node'] == $triple->subj->uri)) {
-	                            $property = strtolower(str_replace('_','',$property));
-	                            $this->foaf_data[$agent_key]['knows'][$node_uri][$property] = $triple->obj->{$obj_value};
-	                            break 2;
-	                        }
-	                    }
-                	}
+                    if (isset($agent['knows']) && is_array($agent['knows'])) {
+                        foreach ($agent['knows'] as $node_uri => $node_data) {
+                            if (isset($node_data['node']) && ($node_data['node'] == $triple->subj->uri)) {
+                                $property = strtolower(str_replace('_','',$property));
+                                $this->foaf_data[$agent_key]['knows'][$node_uri][$property] = $triple->obj->{$obj_value};
+                                break 2;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -921,7 +921,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
 
     function toArray()
     {
-    	return $this->foaf_data;
+        return $this->foaf_data;
     }
 
     /**
@@ -937,7 +937,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
         require_once 'Validate.php';
         $table = '<table>';
         if (!is_array ($foaf_data)) {
-        	$foaf_data = array();
+            $foaf_data = array();
         }
         foreach ($foaf_data as $key => $agent) {
             if (isset ($agent['type'])) {
@@ -957,7 +957,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
                         $name .= ' ' .$agent['familyname'];
                     }
                     if (is_null($name) && isset($agent['nick'])) {
-                    	$name = $agent['nick'][0];
+                        $name = $agent['nick'][0];
                     }
                     if (is_null($name)) {
                         $name = $agent['node'];
