@@ -31,8 +31,12 @@
 				}
 				
 				// Parser our FOAF in $foaf
+				require_once 'Benchmark/Timer.php';
+				$timer = new Benchmark_Timer();
+				$timer->start();
 				$parser->parseFromMem($foaf);
-				
+				$timer->setMarker('Time taken to Parse FOAF File');
+				$timer->stop();
 				if (isset($_REQUEST['table'])) {
 					// Show our FOAF as an HTML table
 					echo "<h2>FOAF as HTML Table</h2>";
@@ -46,17 +50,23 @@
 					var_dump($parser->toArray());
 					echo "</pre>";
 				}
+				
+				if (isset($_REQUEST['timer'])) {
+					$timer->display();
+				}
 			}
 		?>
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 			<p>
 				<label>FOAF File URI: <input type="text" name="foaf" value="<?php echo(@$_REQUEST['foaf']) ?>" /></label>
 				<br />
-				Show XML: <input type="checkbox" name="xml" value="true" />
+				Show RDF/XML: <input type="checkbox" name="xml" value="true" />
 				<br />
 				Show as HTML Table: <input type="checkbox" name="table" value="true" checked="checked" />
 				<br />
 				Show as Array: <input type="checkbox" name="array" value="true" />
+				<br />
+				Show Timer: <input type="checkbox" name="timer" value="true" checked="checked" />
 				<br />
 				<input type="submit" value="Parse FOAF!" />
 			</p>
