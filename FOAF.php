@@ -39,12 +39,28 @@ require_once 'XML/FOAF/Common.php';
 
 class XML_FOAF extends XML_FOAF_Common
 {
+	
+	/**
+	 * @var object XML_Tree object containing the FOAF RDF/XML Tree
+	 */
 
     var $foaf = null;
+    
+    /**
+     * @var array Contains all namespaces in use
+     */
 
     var $namespaces = array();
+    
+    /**
+     * @var array Contains XML_Tree Child nodes for all FOAF elements
+     */
 
     var $children = array();
+    
+    /**
+     * @var object XML_Tree object for the FOAF
+     */
 
     var $xml_tree = null;
 
@@ -918,9 +934,9 @@ class XML_FOAF extends XML_FOAF_Common
             if (is_string($membership_class)) {
                 $membership_tree = new XML_Tree;
                 $membership_tree->getTreeFromString($membership_class);
-                $this->children['membershipClass'] =& $this->foaf->addChild($membership_tree);
+                $this->children['membershipclass'] =& $this->foaf->addChild($membership_tree);
             } else {
-                $this->children['membershipClass'] =& $this->foaf->addChild($membership_class);
+                $this->children['membershipclass'] =& $this->foaf->addChild($membership_class);
             }
             return true;
         } else {
