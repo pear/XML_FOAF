@@ -25,7 +25,7 @@
  */
 
 require_once 'XML/FOAF/Common.php';
- 
+
 /**
  * FOAF Creator
  *
@@ -39,25 +39,25 @@ require_once 'XML/FOAF/Common.php';
 
 class XML_FOAF extends XML_FOAF_Common
 {
-	
-	/**
-	 * @var object XML_Tree object containing the FOAF RDF/XML Tree
-	 */
+
+    /**
+     * @var object XML_Tree object containing the FOAF RDF/XML Tree
+     */
 
     var $foaf = null;
-    
+
     /**
      * @var array Contains all namespaces in use
      */
 
     var $namespaces = array();
-    
+
     /**
      * @var array Contains XML_Tree Child nodes for all FOAF elements
      */
 
     var $children = array();
-    
+
     /**
      * @var object XML_Tree object for the FOAF
      */
@@ -978,7 +978,7 @@ class XML_FOAF extends XML_FOAF_Common
         $this->knows->addChild($foaf_agent->foaf);
         return true;
     }
-    
+
     /**
      * Add an XML_Tree, XML_Tree_Node object or XML String to the FOAF
      *
@@ -986,7 +986,7 @@ class XML_FOAF extends XML_FOAF_Common
      * @access public
      * @return boolean
      */
-     
+
     function addChild(&$xml_tree)
     {
         if (is_array($xml_tree)) {
@@ -1042,7 +1042,7 @@ class XML_FOAF extends XML_FOAF_Common
         $foaf = $beautifier->formatString($foaf);
         return $foaf;
     }
-    
+
     /**
      * Alias for toXML
      *
@@ -1050,12 +1050,12 @@ class XML_FOAF extends XML_FOAF_Common
      * @access public
      * @return string
      */
-     
+
     function get($without_rdf = false)
     {
         return $this->toXML($without_rdf);
     }
-        
+
 
     /**
      * Set an XML Namespace
