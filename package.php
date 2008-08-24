@@ -4,7 +4,11 @@ require_once 'Console/Getopt.php';
 
 $version = '0.3.0';
 $notes = <<<EOT
-* Moved to PEAR::RDF as the RDF backend
+- switch to BSD license
+- add package.xml v2 (while retaining package.xml v1)
+- PEAR CS cleanup
+- Moved to PEAR::RDF as the RDF backend
+- Fixed Bug #2991:  URI Validation with Net_URL [davey]
 EOT;
 
 $description =<<<EOT
@@ -21,27 +25,19 @@ $result = $package->setOptions(array(
     'description'       => $description,
     'version'           => $version,
     'state'             => 'alpha',
-    'license'           => 'PHP License',
+    'license'           => 'BSD License',
     'filelistgenerator' => 'cvs',
     'ignore'            => array('package.php', 'package.xml'),
     'notes'             => $notes,
     'changelogoldtonew' => false,
     'baseinstalldir'    => 'XML',
     'packagedirectory'  => '',
-    'dir_roles'         => array('docs' => 'doc',
-                                 'docs/examples' => 'doc')
+    'dir_roles'         => array('docs/examples' => 'doc')
     ));
 
-$package->addDependency('php', '4.2.0', 'ge', 'php', false);
+$package->addDependency('php', '4.3.0', 'ge', 'php', false);
 $package->addDependency('PEAR', '1.0b1', 'ge', 'pkg', false);
 $package->addDependency('RDF', true, 'has', 'pkg', false);
-
-if (PEAR::isError($result)) {
-    echo $result->getMessage();
-    die();
-}
-
-$package->addDependency('php', '4.3.0', 'ge', 'php', false);
 $package->addDependency('XML_Tree', '1.1', 'ge', 'pkg', false);
 $package->addDependency('XML_Beautifier', '0.2.2', 'ge', 'pkg', false);
 

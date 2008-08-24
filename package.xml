@@ -1,93 +1,137 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
-<package version="1.0">
-  <name>XML_FOAF</name>
-  <summary>Provides the ability to manipulate FOAF RDF/XML</summary>
-  <description>	XML_FOAF Allows advanced creation and simple parsing of FOAF RDF/XML files.
-    The FOAF Project can be found at http://www.foaf-project.org -
-    XML_FOAF_Lite will soon follow for simple creation of FOAFs.</description>
-  <maintainers>
-    <maintainer>
-      <user>Davey</user>
-      <name>Davey Shafik</name>
-      <email>davey@php.net</email>
-      <role>lead</role>
-    </maintainer>
-    <maintainer>
-      <user>ashnazg</user>
-      <name>Chuck Burgess</name>
-      <email>ashnazg@php.net</email>
-      <role>lead</role>
-    </maintainer>
+<package version="1.0" packagerversion="1.7.2">
+ <name>XML_FOAF</name>
+ <summary>Provides the ability to manipulate FOAF RDF/XML</summary>
+ <description>XML_FOAF Allows advanced creation and simple parsing of FOAF RDF/XML files.
+The FOAF Project can be found at http://www.foaf-project.org -
+XML_FOAF_Lite will soon follow for simple creation of FOAFs.
+ </description>
+ <maintainers>
+  <maintainer>
+   <user>Davey</user>
+   <name>Davey Shafik</name>
+   <email>davey@php.net</email>
+   <role>lead</role>
+  </maintainer>
+  <maintainer>
+   <user>ashnazg</user>
+   <name>Chuck Burgess</name>
+   <email>ashnazg@php.net</email>
+   <role>lead</role>
+  </maintainer>
   </maintainers>
-  <release>
+ <release>
+  <version>0.3.0</version>
+  <date>2008-08-24</date>
+  <license>BSD License</license>
+  <state>alpha</state>
+  <notes>- switch to BSD license
+- add package.xml v2 (while retaining package.xml v1)
+- PEAR CS cleanup
+- Moved to PEAR::RDF as the RDF backend
+- Fixed Bug #2991:  URI Validation with Net_URL [davey]
+  </notes>
+  <deps>
+   <dep type="php" rel="ge" version="4.3.0" optional="no"/>
+   <dep type="pkg" rel="ge" version="1.1" optional="no">XML_Tree</dep>
+   <dep type="pkg" rel="ge" version="0.2.2" optional="no">XML_Beautifier</dep>
+   <dep type="pkg" rel="ge" version="1.0b1" optional="no">PEAR</dep>
+   <dep type="pkg" rel="has" optional="no">RDF</dep>
+  </deps>
+  <provides type="class" name="XML_FOAF" extends="XML_FOAF_Common" />
+  <provides type="function" name="XML_FOAF::newAgent" />
+  <provides type="function" name="XML_FOAF::setName" />
+  <provides type="function" name="XML_FOAF::addDepiction" />
+  <provides type="function" name="XML_FOAF::addFundedBy" />
+  <provides type="function" name="XML_FOAF::addLogo" />
+  <provides type="function" name="XML_FOAF::addPage" />
+  <provides type="function" name="XML_FOAF::addTheme" />
+  <provides type="function" name="XML_FOAF::setTitle" />
+  <provides type="function" name="XML_FOAF::addNick" />
+  <provides type="function" name="XML_FOAF::setGivenName" />
+  <provides type="function" name="XML_FOAF::addPhone" />
+  <provides type="function" name="XML_FOAF::addMbox" />
+  <provides type="function" name="XML_FOAF::addMboxSha1Sum" />
+  <provides type="function" name="XML_FOAF::setGender" />
+  <provides type="function" name="XML_FOAF::addJabberID" />
+  <provides type="function" name="XML_FOAF::addAimChatID" />
+  <provides type="function" name="XML_FOAF::addIcqChatID" />
+  <provides type="function" name="XML_FOAF::addYahooChatID" />
+  <provides type="function" name="XML_FOAF::addMsnChatID" />
+  <provides type="function" name="XML_FOAF::addOnlineAccount" />
+  <provides type="function" name="XML_FOAF::addOnlineChatAccount" />
+  <provides type="function" name="XML_FOAF::addOnlineGamingAccount" />
+  <provides type="function" name="XML_FOAF::addOnlineEcommerceAccount" />
+  <provides type="function" name="XML_FOAF::addHomepage" />
+  <provides type="function" name="XML_FOAF::addWeblog" />
+  <provides type="function" name="XML_FOAF::addMade" />
+  <provides type="function" name="XML_FOAF::setGeekcode" />
+  <provides type="function" name="XML_FOAF::setFirstName" />
+  <provides type="function" name="XML_FOAF::setSurname" />
+  <provides type="function" name="XML_FOAF::setFamilyName" />
+  <provides type="function" name="XML_FOAF::setPlan" />
+  <provides type="function" name="XML_FOAF::addImg" />
+  <provides type="function" name="XML_FOAF::addMyersBriggs" />
+  <provides type="function" name="XML_FOAF::addWorkplaceHomepage" />
+  <provides type="function" name="XML_FOAF::addWorkInfoHomepage" />
+  <provides type="function" name="XML_FOAF::addSchoolHomepage" />
+  <provides type="function" name="XML_FOAF::addPublications" />
+  <provides type="function" name="XML_FOAF::addCurrentProject" />
+  <provides type="function" name="XML_FOAF::addPastProject" />
+  <provides type="function" name="XML_FOAF::setBasedNear" />
+  <provides type="function" name="XML_FOAF::addInterest" />
+  <provides type="function" name="XML_FOAF::addMember" />
+  <provides type="function" name="XML_FOAF::setMembershipClass" />
+  <provides type="function" name="XML_FOAF::addSeeAlso" />
+  <provides type="function" name="XML_FOAF::addKnows" />
+  <provides type="function" name="XML_FOAF::addChild" />
+  <provides type="function" name="XML_FOAF::dump" />
+  <provides type="function" name="XML_FOAF::toXML" />
+  <provides type="function" name="XML_FOAF::get" />
+  <provides type="function" name="XML_FOAF::addXmlns" />
+  <filelist>
+   <dir name="docs">
+    <dir name="examples">
+     <file role="doc" baseinstalldir="XML" name="example1.php"/>
+     <file role="doc" baseinstalldir="XML" name="example2.php"/>
+    </dir> <!-- /docs/examples -->
+   </dir> <!-- /docs -->
+   <dir name="FOAF">
+    <file role="php" baseinstalldir="XML" name="Common.php"/>
+    <file role="php" baseinstalldir="XML" name="Parser.php"/>
+   </dir> <!-- /FOAF -->
+   <file role="php" baseinstalldir="XML" name="FOAF.php"/>
+  </filelist>
+ </release>
+ <changelog>
+   <release>
+    <version>0.3.0</version>
+    <date>2008-08-24</date>
+    <license>BSD License</license>
+    <state>alpha</state>
+    <notes>- switch to BSD license
+- add package.xml v2 (while retaining package.xml v1)
+- PEAR CS cleanup
+- Moved to PEAR::RDF as the RDF backend
+- Fixed Bug #2991:  URI Validation with Net_URL [davey]
+    </notes>
+   </release>
+   <release>
     <version>0.2</version>
     <date>2004-01-15</date>
     <license>PHP License</license>
     <state>alpha</state>
-    <notes>
-      * Added XML_FOAF_Parser.
-      * Fixed small bugs in XML_FOAF
-      * Moved common methods to XML_FOAF_Common
+    <notes>* Added XML_FOAF_Parser.
     </notes>
-    <deps>
-      <dep type="php" rel="ge" version="4.3.0" optional="no"/>
-      <dep type="pkg" rel="ge" version="1.1" optional="no">XML_Tree</dep>
-      <dep type="pkg" rel="ge" version="0.2.2" optional="no">XML_Beautifier</dep>
-    </deps>
-    <filelist>
-      <file role="doc" baseinstalldir="XML" name="docs/examples/example1.php"/>
-      <file role="doc" baseinstalldir="XML" name="docs/examples/example1.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/Common.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/Parser.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/constants.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/RdfAPI.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/Blanknode.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/DbModel.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/DbStore.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/Literal.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/MemModel.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/Model.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/Node.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/Resource.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/model/Statement.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/rdql/RdqlDbEngine.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/rdql/RdqlEngine.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/rdql/RdqlMemEngine.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/rdql/RdqlParser.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/rdql/RdqlResultIterator.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/syntax/N3Parser.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/syntax/N3Serializer.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/syntax/NTripleSerializer.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/syntax/RdfParser.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/syntax/RdfSerializer.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/util/Object.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/util/RdfUtil.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/util/StatementIterator.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/vocabulary/DC.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/vocabulary/OWL.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/vocabulary/RDF.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/vocabulary/RDFS.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF/RAP/vocabulary/VCARD.php"/>
-      <file role="php" baseinstalldir="XML" name="FOAF.php"/>
-    </filelist>
-  </release>
-  <changelog>
-    <release>
-      <version>0.2</version>
-      <date>2004-01-15</date>
-      <license>PHP License</license>
-      <state>alpha</state>
-      <notes>	* Added XML_FOAF_Parser.
-    * Fixed small bugs in XML_FOAF
-    * Moved common methods to XML_FOAF_Common</notes>
-    </release>
-    <release>
-      <version>0.1</version>
-      <date>2004-01-07</date>
-      <license>PHP License</license>
-      <state>alpha</state>
-      <notes>Initial PEAR Release</notes>
-    </release>
-  </changelog>
+   </release>
+   <release>
+    <version>0.1</version>
+    <date>2004-01-07</date>
+    <license>PHP License</license>
+    <state>alpha</state>
+    <notes>Initial PEAR Release
+    </notes>
+   </release>
+ </changelog>
 </package>
