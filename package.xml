@@ -30,29 +30,8 @@
       <dep type="pkg" rel="ge" version="0.2.2" optional="no">XML_Beautifier</dep>
     </deps>
     <filelist>
-      <file role="doc" baseinstalldir="XML" name="docs/classtrees_XML_FOAF.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/elementindex.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/elementindex_XML_FOAF.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/errors.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/index.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/li_XML_FOAF.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/todolist.html"/>
       <file role="doc" baseinstalldir="XML" name="docs/examples/example1.php"/>
-      <file role="doc" baseinstalldir="XML" name="docs/examples/example2.php"/>
-      <file role="doc" baseinstalldir="XML" name="docs/media/background.png"/>
-      <file role="doc" baseinstalldir="XML" name="docs/media/empty.png"/>
-      <file role="doc" baseinstalldir="XML" name="docs/media/style.css"/>
-      <file role="doc" baseinstalldir="XML" name="docs/XML_FOAF/XML_FOAF.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/XML_FOAF/XML_FOAF_Common.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/XML_FOAF/XML_FOAF_Parser.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/XML_FOAF/_FOAF_FOAF_Common_php.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/XML_FOAF/_FOAF_FOAF_Parser_php.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/XML_FOAF/_FOAF_FOAF_php.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/__examplesource/exsource_b_php-cvs_pear_XML_FOAF_docs_examples_example1.php_6ab1d411fe799e5201ee174f526c0096.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/__examplesource/exsource_b_php-cvs_pear_XML_FOAF_docs_examples_example2.php_a280ab881cf423ec1ea7af36f85f7311.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/__filesource/fsource_XML_FOAF__FOAF.php.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/__filesource/fsource_XML_FOAF__FOAF_Common.php.html"/>
-      <file role="doc" baseinstalldir="XML" name="docs/__filesource/fsource_XML_FOAF__FOAF_Parser.php.html"/>
+      <file role="doc" baseinstalldir="XML" name="docs/examples/example1.php"/>
       <file role="php" baseinstalldir="XML" name="FOAF/Common.php"/>
       <file role="php" baseinstalldir="XML" name="FOAF/Parser.php"/>
       <file role="php" baseinstalldir="XML" name="FOAF/RAP/constants.php"/>
