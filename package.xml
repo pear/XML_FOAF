@@ -13,6 +13,12 @@
       <email>davey@php.net</email>
       <role>lead</role>
     </maintainer>
+    <maintainer>
+      <user>ashnazg</user>
+      <name>Chuck Burgess</name>
+      <email>ashnazg@php.net</email>
+      <role>lead</role>
+    </maintainer>
   </maintainers>
   <release>
     <version>0.2</version>
