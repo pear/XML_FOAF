@@ -1,3 +1,9 @@
+== XML_FOAF ==
+A quick wrapper to help render a FOAF file.
+
+See https://github.com/pear/XML_FOAF/blob/master/docs/examples/example1.php
+
+== About ==
 This package is http://pear.php.net/package/XML_FOAF and has been migrated from http://svn.php.net/repository/pear/packages/XML_FOAF
 
 Please report all new issues via the PEAR bug tracker.
