@@ -1,47 +1,62 @@
 <?php
-require_once 'PEAR/PackageFileManager.php';
-require_once 'Console/Getopt.php';
 
-$version = '0.3.0';
-$notes = <<<EOT
-- switch to BSD license
-- add package.xml v2 (while retaining package.xml v1)
-- PEAR CS cleanup
-- Moved to PEAR::RDF as the RDF backend
-- Fixed Bug #2991:  URI Validation with Net_URL [davey]
-EOT;
+require_once 'PEAR/PackageFileManager2.php';
+PEAR::setErrorHandling(PEAR_ERROR_DIE);
 
-$description =<<<EOT
+$desc = <<<EOT
 XML_FOAF Allows advanced creation and simple parsing of FOAF RDF/XML files.
 The FOAF Project can be found at http://www.foaf-project.org -
 XML_FOAF_Lite will soon follow for simple creation of FOAFs.
 EOT;
 
-$package = new PEAR_PackageFileManager();
+$version = '0.4.0';
+$apiver  = '0.4.0';
+$state   = 'beta';
 
-$result = $package->setOptions(array(
-    'package'           => 'XML_FOAF',
-    'summary'           => 'Provides the ability to manipulate FOAF RDF/XML',
-    'description'       => $description,
-    'version'           => $version,
-    'state'             => 'alpha',
-    'license'           => 'BSD License',
+$notes = <<<EOT
+PHP5 only
+EOT;
+
+$package = PEAR_PackageFileManager2::importOptions(
+    'package.xml',
+    array(
     'filelistgenerator' => 'cvs',
-    'ignore'            => array('package.php', 'package.xml', 'package2.php', 'package2.xml'),
-    'notes'             => $notes,
     'changelogoldtonew' => false,
-    'baseinstalldir'    => 'XML',
-    'packagedirectory'  => '',
-    'dir_roles'         => array('docs/examples' => 'doc')
-    ));
+    'simpleoutput'	=> true,
+    'baseinstalldir'    => '/',
+    'packagefile'       => 'package.xml',
+    'packagedirectory'  => '.'));
 
-$package->addDependency('php', '4.3.0', 'ge', 'php', false);
-$package->addDependency('PEAR', '1.0b1', 'ge', 'pkg', false);
-$package->addDependency('RDF', true, 'has', 'pkg', false);
-$package->addDependency('XML_Tree', '1.1', 'ge', 'pkg', false);
-$package->addDependency('XML_Beautifier', '0.2.2', 'ge', 'pkg', false);
+if (PEAR::isError($result)) {
+    echo $result->getMessage();
+    die();
+}
 
-if (isset($_GET['make']) || (isset($_SERVER['argv'][1]) && $_SERVER['argv'][1] == 'make')) {
+$package->clearDeps();
+
+$package->setPackage('XML_FOAF');
+$package->setPackageType('php');
+$package->setSummary('Provides the ability to manipulate FOAF RDF/XML');
+$package->setDescription($desc);
+$package->setChannel('pear.php.net');
+$package->setLicense('BSD License', 'http://opensource.org/licenses/bsd-license');
+$package->setAPIVersion($apiver);
+$package->setAPIStability($state);
+$package->setReleaseVersion($version);
+$package->setReleaseStability($state);
+$package->setNotes($notes);
+$package->setPhpDep('5.0.0');
+$package->setPearinstallerDep('1.0b1');
+$package->addIgnore(array('package.php', 'package.xml', 'package2.php', 'package2.xml'));
+$package->addPackageDepWithChannel('required', 'RDF', 'pear.php.net', '0.1.0alpha1');
+$package->addPackageDepWithChannel('required', 'XML_Beautifier', 'pear.php.net', '0.2.2');
+$package->addPackageDepWithChannel('required', 'XML_Tree', 'pear.php.net', '1.1');
+$package->addReplacement('FOAF.php', 'package-info', '@package_version@', 'version');
+$package->addReplacement('FOAF/Common.php', 'package-info', '@package_version@', 'version');
+$package->addReplacement('FOAF/Parser.php', 'package-info', '@package_version@', 'version');
+$package->generateContents();
+
+if ($_SERVER['argv'][1] == 'make') {
     $result = $package->writePackageFile();
 } else {
     $result = $package->debugPackageFile();
@@ -51,4 +66,3 @@ if (PEAR::isError($result)) {
     echo $result->getMessage();
     die();
 }
-?>
