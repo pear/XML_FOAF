@@ -4,8 +4,7 @@
  <channel>pear.php.net</channel>
  <summary>Provides the ability to manipulate FOAF RDF/XML</summary>
  <description>XML_FOAF Allows advanced creation and simple parsing of FOAF RDF/XML files.
-The FOAF Project can be found at http://www.foaf-project.org -
-XML_FOAF_Lite will soon follow for simple creation of FOAFs.</description>
+The FOAF Project can be found at http://www.foaf-project.org -</description>
  <lead>
   <name>Davey Shafik</name>
   <user>Davey</user>
@@ -19,7 +18,7 @@ XML_FOAF_Lite will soon follow for simple creation of FOAFs.</description>
   <active>yes</active>
  </lead>
  <date>2012-03-25</date>
- <time>16:15:22</time>
+ <time>16:46:38</time>
  <version>
   <release>0.4.0</release>
   <api>0.4.0</api>
@@ -30,7 +29,9 @@ XML_FOAF_Lite will soon follow for simple creation of FOAFs.</description>
  </stability>
  <license uri="http://opensource.org/licenses/bsd-license">BSD License</license>
  <notes>
+QA release
 PHP5 only
+Remove assign-by-ref errors
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -42,10 +43,16 @@ PHP5 only
    </dir> <!-- /docs -->
    <dir name="XML">
     <dir name="FOAF">
-     <file name="Common.php" role="php" />
-     <file name="Parser.php" role="php" />
+     <file name="Common.php" role="php">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file name="Parser.php" role="php">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
     </dir> <!-- /XML/FOAF -->
-    <file name="FOAF.php" role="php" />
+    <file name="FOAF.php" role="php">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
    </dir> <!-- /XML -->
    <file name="README" role="data" />
   </dir> <!-- / -->
@@ -89,7 +96,9 @@ PHP5 only
    <date>2012-03-25</date>
    <license uri="http://opensource.org/licenses/bsd-license">BSD License</license>
    <notes>
+QA release
 PHP5 only
+Remove assign-by-ref errors
    </notes>
   </release>
   <release>

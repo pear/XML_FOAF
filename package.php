@@ -6,7 +6,6 @@ PEAR::setErrorHandling(PEAR_ERROR_DIE);
 $desc = <<<EOT
 XML_FOAF Allows advanced creation and simple parsing of FOAF RDF/XML files.
 The FOAF Project can be found at http://www.foaf-project.org -
-XML_FOAF_Lite will soon follow for simple creation of FOAFs.
 EOT;
 
 $version = '0.4.0';
@@ -14,7 +13,9 @@ $apiver  = '0.4.0';
 $state   = 'beta';
 
 $notes = <<<EOT
+QA release
 PHP5 only
+Remove assign-by-ref errors
 EOT;
 
 $package = PEAR_PackageFileManager2::importOptions(
@@ -47,13 +48,13 @@ $package->setReleaseStability($state);
 $package->setNotes($notes);
 $package->setPhpDep('5.0.0');
 $package->setPearinstallerDep('1.0b1');
-$package->addIgnore(array('package.php', 'package.xml', 'package2.php', 'package2.xml'));
+$package->addIgnore(array('package.php', 'package.xml'));
 $package->addPackageDepWithChannel('required', 'RDF', 'pear.php.net', '0.1.0alpha1');
 $package->addPackageDepWithChannel('required', 'XML_Beautifier', 'pear.php.net', '0.2.2');
 $package->addPackageDepWithChannel('required', 'XML_Tree', 'pear.php.net', '1.1');
-$package->addReplacement('FOAF.php', 'package-info', '@package_version@', 'version');
-$package->addReplacement('FOAF/Common.php', 'package-info', '@package_version@', 'version');
-$package->addReplacement('FOAF/Parser.php', 'package-info', '@package_version@', 'version');
+$package->addReplacement('XML/FOAF.php', 'package-info', '@package_version@', 'version');
+$package->addReplacement('XML/FOAF/Common.php', 'package-info', '@package_version@', 'version');
+$package->addReplacement('XML/FOAF/Parser.php', 'package-info', '@package_version@', 'version');
 $package->generateContents();
 
 if ($_SERVER['argv'][1] == 'make') {
