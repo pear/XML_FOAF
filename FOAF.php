@@ -7,7 +7,7 @@
  *
  * XML FOAF package
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -110,18 +110,6 @@ class XML_FOAF extends XML_FOAF_Common
             }
         }
         $this->_setXmlns();
-    }
-
-    /**
-     * XML_FOAF PHP4 Compatible Constructor
-     *
-     * @param XML_FOAF_Parser $xml_foaf_parser_object parser object
-     *
-     * @see XML_FOAF::__construct
-     */
-    function XML_FOAF ($xml_foaf_parser_object = null)
-    {
-        $this->__construct($xml_foaf_parser_object);
     }
 
     /**
@@ -1331,4 +1319,3 @@ dnaChecksum, title, nick, givenname, phone, mbox, mbox_sha1sum, gender, jabberID
 aimChatID, icqChatID, yahooChatID, msnChatID, homepage, weblog, made, holdsAccount
 */
 
-?>

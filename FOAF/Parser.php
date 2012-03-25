@@ -7,7 +7,7 @@
  *
  * XML FOAF package
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -120,15 +120,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
     {
         require_once 'RDF.php';
         require_once 'RDF/Model/Memory.php';
-        $this->rdf_parser =& new RDF_Parser;
-    }
-
-    /**
-     * XML_FOAF_Parser PHP4 Compatible Constructor
-     */
-    function XML_FOAF_Parser()
-    {
-        $this->__construct();
+        $this->rdf_parser = new RDF_Parser;
     }
 
     /**
