@@ -20,7 +20,7 @@ EOT;
 $package = PEAR_PackageFileManager2::importOptions(
     'package.xml',
     array(
-    'filelistgenerator' => 'cvs',
+    'filelistgenerator' => 'git',
     'changelogoldtonew' => false,
     'simpleoutput'	=> true,
     'baseinstalldir'    => '/',

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-http://pear.php.net/dtd/tasks-1.0.xsd
-http://pear.php.net/dtd/package-2.0
-http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>XML_FOAF</name>
  <channel>pear.php.net</channel>
  <summary>Provides the ability to manipulate FOAF RDF/XML</summary>
  <description>XML_FOAF Allows advanced creation and simple parsing of FOAF RDF/XML files.
 The FOAF Project can be found at http://www.foaf-project.org -
-XML_FOAF_Lite will soon follow for simple creation of FOAFs.
- 
- </description>
+XML_FOAF_Lite will soon follow for simple creation of FOAFs.</description>
  <lead>
   <name>Davey Shafik</name>
   <user>Davey</user>
@@ -23,51 +18,50 @@ XML_FOAF_Lite will soon follow for simple creation of FOAFs.
   <email>ashnazg@php.net</email>
   <active>yes</active>
  </lead>
- <date>2008-08-24</date>
- <time>08:38:53</time>
+ <date>2012-03-25</date>
+ <time>16:15:22</time>
  <version>
-  <release>0.3.0</release>
-  <api>0.3.0</api>
+  <release>0.4.0</release>
+  <api>0.4.0</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
- <license>BSD License</license>
- <notes>- switch to BSD license
-- add package.xml v2 (while retaining package.xml v1)
-- PEAR CS cleanup
-- Moved to PEAR::RDF as the RDF backend
-- Fixed Bug #2991:  URI Validation with Net_URL [davey]
-  
+ <license uri="http://opensource.org/licenses/bsd-license">BSD License</license>
+ <notes>
+PHP5 only
  </notes>
  <contents>
-  <dir name="/">
+  <dir baseinstalldir="/" name="/">
    <dir name="docs">
     <dir name="examples">
-     <file baseinstalldir="XML" name="example1.php" role="doc" />
-     <file baseinstalldir="XML" name="example2.php" role="doc" />
+     <file name="example1.php" role="doc" />
+     <file name="example2.php" role="doc" />
     </dir> <!-- /docs/examples -->
    </dir> <!-- /docs -->
-   <dir name="FOAF">
-    <file baseinstalldir="XML" name="Common.php" role="php" />
-    <file baseinstalldir="XML" name="Parser.php" role="php" />
-   </dir> <!-- /FOAF -->
-   <file baseinstalldir="XML" name="FOAF.php" role="php" />
+   <dir name="XML">
+    <dir name="FOAF">
+     <file name="Common.php" role="php" />
+     <file name="Parser.php" role="php" />
+    </dir> <!-- /XML/FOAF -->
+    <file name="FOAF.php" role="php" />
+   </dir> <!-- /XML -->
+   <file name="README" role="data" />
   </dir> <!-- / -->
  </contents>
  <dependencies>
   <required>
    <php>
-    <min>4.3.0</min>
+    <min>5.0.0</min>
    </php>
    <pearinstaller>
-    <min>1.4.0b1</min>
+    <min>1.0b1</min>
    </pearinstaller>
    <package>
-    <name>XML_Tree</name>
+    <name>RDF</name>
     <channel>pear.php.net</channel>
-    <min>1.1</min>
+    <min>0.1.0alpha1</min>
    </package>
    <package>
     <name>XML_Beautifier</name>
@@ -75,18 +69,29 @@ XML_FOAF_Lite will soon follow for simple creation of FOAFs.
     <min>0.2.2</min>
    </package>
    <package>
-    <name>PEAR</name>
+    <name>XML_Tree</name>
     <channel>pear.php.net</channel>
-    <min>1.0b1</min>
-   </package>
-   <package>
-    <name>RDF</name>
-    <channel>pear.php.net</channel>
+    <min>1.1</min>
    </package>
   </required>
  </dependencies>
  <phprelease />
  <changelog>
+  <release>
+   <version>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2012-03-25</date>
+   <license uri="http://opensource.org/licenses/bsd-license">BSD License</license>
+   <notes>
+PHP5 only
+   </notes>
+  </release>
   <release>
    <version>
     <release>0.3.0</release>
@@ -98,12 +103,12 @@ XML_FOAF_Lite will soon follow for simple creation of FOAFs.
    </stability>
    <date>2008-08-24</date>
    <license uri="http://www.example.com">BSD License</license>
-   <notes>- switch to BSD license
+   <notes>
+- switch to BSD license
 - add package.xml v2 (while retaining package.xml v1)
 - PEAR CS cleanup
 - Moved to PEAR::RDF as the RDF backend
 - Fixed Bug #2991:  URI Validation with Net_URL [davey]
-    
    </notes>
   </release>
   <release>
@@ -117,8 +122,8 @@ XML_FOAF_Lite will soon follow for simple creation of FOAFs.
    </stability>
    <date>2004-01-15</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>* Added XML_FOAF_Parser.
-    
+   <notes>
+* Added XML_FOAF_Parser.
    </notes>
   </release>
   <release>
@@ -132,8 +137,8 @@ XML_FOAF_Lite will soon follow for simple creation of FOAFs.
    </stability>
    <date>2004-01-07</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>Initial PEAR Release
-    
+   <notes>
+Initial PEAR Release
    </notes>
   </release>
  </changelog>
