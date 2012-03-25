@@ -178,7 +178,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      */
     function _parse()
     {
-        $this->foaf      =& $this->rdf_parser->generateModel($this->foaf_xml);
+        $this->foaf      = $this->rdf_parser->generateModel($this->foaf_xml);
         $this->foaf_data = $this->_fetchAgent();
         $this->_fetchAimChatID();
         $this->_fetchCurrentProject();
@@ -237,20 +237,20 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      */
     function _fetchAgent()
     {
-        $person_resource       =& RDF_Resource::factory(XML_FOAF_NS . 'Person');
+        $person_resource       = RDF_Resource::factory(XML_FOAF_NS . 'Person');
         $persons               = $this->foaf->find(null, null, $person_resource);
-        $group_resource        =& RDF_Resource::factory(XML_FOAF_NS . 'Group');
+        $group_resource        = RDF_Resource::factory(XML_FOAF_NS . 'Group');
         $groups                = $this->foaf->find(null, null, $group_resource);
-        $organization_resource =&
+        $organization_resource =
             RDF_Resource::factory(XML_FOAF_NS . 'Organization');
         $organizations         = 
             $this->foaf->find(null, null, $organization_resource);
-        $agent_resource        =& RDF_Resource::factory(XML_FOAF_NS . 'Agent');
+        $agent_resource        = RDF_Resource::factory(XML_FOAF_NS . 'Agent');
         $agents                = $this->foaf->find(null, null, $agent_resource);
         $agents->addModel($persons);
         $agents->addModel($groups);
         $agents->addModel($organizations);
-        $knows_resource =& RDF_Resource::factory(XML_FOAF_NS . 'knows');
+        $knows_resource = RDF_Resource::factory(XML_FOAF_NS . 'knows');
         $knows          = $this->foaf->find(null, $knows_resource, null);
         $i              = 0;
         $agent_nodes    = array();
@@ -378,7 +378,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      */
     function _fetchNick()
     {
-        $nick_resource =& RDF_Resource::factory(XML_FOAF_NS . 'nick');
+        $nick_resource = RDF_Resource::factory(XML_FOAF_NS . 'nick');
         $nicks         = $this->foaf->find(null, $nick_resource, null);
         foreach ($nicks->triples as $nick) {
             if (in_array($nick->subj->uri, $this->agent_nodes)) {
@@ -519,19 +519,19 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      */
     function _fetchHoldsAccount()
     {
-        $holds_account_resource            =& 
+        $holds_account_resource            = 
             RDF_Resource::factory(XML_FOAF_NS . 'holdsAccount');
         $holds_accounts                    = 
             $this->foaf->find(null, $holds_account_resource, null);
-        $account_name_resource             =& 
+        $account_name_resource             = 
             RDF_Resource::factory(XML_FOAF_NS . 'accountName');
         $account_names                     = 
             $this->foaf->find(null, $account_name_resource, null);
-        $account_service_homepage_resource =& 
+        $account_service_homepage_resource = 
             RDF_Resource::factory(XML_FOAF_NS . 'accountServiceHomepage');
         $account_service_homepages         = 
             $this->foaf->find(null, $account_service_homepage_resource, null);
-        $rdf_type_resource                 =& 
+        $rdf_type_resource                 = 
             RDF_Resource::factory(XML_FOAF_RDF_NS . 'type');
         $rdf_types                         = 
             $this->foaf->find(null, $rdf_type_resource, null);
@@ -561,19 +561,19 @@ class XML_FOAF_Parser extends XML_FOAF_Common
             }
         }
 
-        $online_account_resource           =& 
+        $online_account_resource           = 
             RDF_Resource::factory(XML_FOAF_NS . 'OnlineAccount');
         $online_accounts                   = 
             $this->foaf->find(null, null, $online_account_resource);
-        $online_chat_account_resource      =& 
+        $online_chat_account_resource      = 
             RDF_Resource::factory(XML_FOAF_NS .'OnlineChatAccount');
         $online_chat_accounts              = 
             $this->foaf->find(null, null, $online_chat_account_resource);
-        $online_gaming_account_resource    =& 
+        $online_gaming_account_resource    = 
             RDF_Resource::factory(XML_FOAF_NS . 'OnlineGamingAccount');
         $online_gaming_accounts            = 
             $this->foaf->find(null, null, $online_gaming_account_resource);
-        $online_ecommerce_account_resource =& 
+        $online_ecommerce_account_resource = 
             RDF_Resource::factory(XML_FOAF_NS . 'OnlineEcommerceAccount');
         $online_ecommerce_accounts         = 
             $this->foaf->find(null, null, $online_ecommerce_account_resource);
@@ -888,7 +888,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      */
     function _fetchDcTitle()
     {
-        $dc_title_resource =& RDF_Resource::factory(XML_FOAF_DC_NS . 'title');
+        $dc_title_resource = RDF_Resource::factory(XML_FOAF_DC_NS . 'title');
         $dc_titles         = $this->foaf->find(null, $dc_title_resource, null);
         foreach ($dc_titles->triples as $title) {
             $this->foaf_data['dc']['title'][$title->subj->uri] = $title->obj->label;
@@ -907,7 +907,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
      */
     function _fetchDcDescription()
     {
-        $dc_description_resource =& 
+        $dc_description_resource = 
             RDF_Resource::factory(XML_FOAF_DC_NS . 'description');
         $dc_descriptions         = 
             $this->foaf->find(null, $dc_description_resource, null);
@@ -932,7 +932,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
     function _fetchProperty($xmlns, $property, $obj_value)
     {
         $obj_value         = strtolower($obj_value);
-        $property_resource =& RDF_Resource::factory($xmlns . $property);
+        $property_resource = RDF_Resource::factory($xmlns . $property);
         $properties        = $this->foaf->find(null, $property_resource, null);
         foreach ($properties->triples as $triple) {
             if (in_array($triple->subj->uri, $this->agent_nodes)) {
@@ -978,7 +978,7 @@ class XML_FOAF_Parser extends XML_FOAF_Common
     function _getProperty($xmlns, $property, $obj_value)
     {
         $obj_value         = strtolower($obj_value);
-        $property_resource =& RDF_Resource::factory($xmlns . $property);
+        $property_resource = RDF_Resource::factory($xmlns . $property);
         $properties        = $this->foaf->find(null, $property_resource, null);
         foreach ($properties->triples as $triple) {
             if (in_array($triple->subj->uri, $this->agent_nodes)) {
@@ -1041,14 +1041,14 @@ class XML_FOAF_Parser extends XML_FOAF_Common
     /**
      * Return parsed FOAF data pretty HTML
      *
-     * @param mixed &$foaf_data the FOAF data
+     * @param mixed $foaf_data the FOAF data
      *
      * @access public
      * @return string
      * @todo Write code to return an HTML table
      * @todo PEAR CS - should require_once be include_once?
      */
-    function toHTML(&$foaf_data)
+    function toHTML($foaf_data)
     {
         require_once 'Validate.php';
         $table = '<table>';

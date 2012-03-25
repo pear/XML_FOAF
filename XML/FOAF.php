@@ -106,7 +106,7 @@ class XML_FOAF extends XML_FOAF_Common
                     '', $xml_foaf_parser_object->foaf_xml);
                 require_once 'XML/Tree.php';
                 $this->xml_tree = new XML_Tree;
-                $this->foaf     =& $this->xml_tree->getTreeFromString($foaf);
+                $this->foaf     = $this->xml_tree->getTreeFromString($foaf);
             }
         }
         $this->_setXmlns();
@@ -139,16 +139,16 @@ class XML_FOAF extends XML_FOAF_Common
         $this->agent    = $agent_type;
         switch ($agent_type) {
         case 'group':
-            $this->foaf =& $this->xml_tree->addRoot('foaf:Group');
+            $this->foaf = $this->xml_tree->addRoot('foaf:Group');
             break;
         case 'organization':
-            $this->foaf =& $this->xml_tree->addRoot('foaf:Organization');
+            $this->foaf = $this->xml_tree->addRoot('foaf:Organization');
             break;
         case 'agent':
-            $this->foaf =& $this->xml_tree->addRoot('foaf:Agent');
+            $this->foaf = $this->xml_tree->addRoot('foaf:Agent');
         case 'person':
         default:
-            $this->foaf =& $this->xml_tree->addRoot('foaf:Person');
+            $this->foaf = $this->xml_tree->addRoot('foaf:Person');
             break;
         }
     }
@@ -167,7 +167,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function setName($name)
     {
-        $this->children['name'] =& $this->foaf->addChild('foaf:name', $name);
+        $this->children['name'] = $this->foaf->addChild('foaf:name', $name);
     }
 
     /**
@@ -185,7 +185,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         $uri = $this->_resolveURI($uri);
 
-        $this->children['depiction'][] =& $this->foaf->addChild('foaf:depiction', 
+        $this->children['depiction'][] = $this->foaf->addChild('foaf:depiction', 
             '', array('rdf:resource' => $uri));
     }
 
@@ -204,7 +204,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         $uri = $this->_resolveURI($uri);
 
-        $this->children['fundedby'][] =& $this->foaf->addChild('foaf:fundedBy', 
+        $this->children['fundedby'][] = $this->foaf->addChild('foaf:fundedBy', 
             '', array('rdf:resource' => $uri));
     }
 
@@ -223,7 +223,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         $uri = $this->_resolveURI($uri);
 
-        $this->children['logo'][] =& $this->foaf->addChild('foaf:logo', 
+        $this->children['logo'][] = $this->foaf->addChild('foaf:logo', 
             '', array('rdf:resource' => $uri));
     }
 
@@ -242,8 +242,8 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addPage($document_uri,$title = null,$description = null)
     {
-        $page     =& $this->foaf->addChild('foaf:page');
-        $document =& $page->addChild('foaf:Document', 
+        $page     = $this->foaf->addChild('foaf:page');
+        $document = $page->addChild('foaf:Document', 
             '', array('rdf:about' => $document_uri));
         if (!is_null($title)) {
             $document->addChild('dc:title', $title);
@@ -251,7 +251,7 @@ class XML_FOAF extends XML_FOAF_Common
         if (!is_null($description)) {
             $document->addChild('dc:description', $description);
         }
-        $this->children['page'][] =& $page;
+        $this->children['page'][] = $page;
     }
 
     /**
@@ -269,7 +269,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         $uri = $this->_resolveURI($uri);
 
-        $this->children['theme'][] =& $this->foaf->addChild('foaf:theme', 
+        $this->children['theme'][] = $this->foaf->addChild('foaf:theme', 
             '', array('rdf:resource' => $uri));
     }
 
@@ -286,7 +286,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function setTitle($title)
     {
-        $this->children['title'] =& $this->foaf->addChild('foaf:title', $title);
+        $this->children['title'] = $this->foaf->addChild('foaf:title', $title);
     }
 
     /**
@@ -302,7 +302,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addNick($nick)
     {
-        $this->children['nick'][] =& $this->foaf->addChild('foaf:nick', $nick);
+        $this->children['nick'][] = $this->foaf->addChild('foaf:nick', $nick);
     }
 
     /**
@@ -318,7 +318,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function setGivenName($given_name)
     {
-        $this->children['givenname'] =& $this->foaf->addChild('foaf:givenname', 
+        $this->children['givenname'] = $this->foaf->addChild('foaf:givenname', 
             $given_name);
     }
 
@@ -338,7 +338,7 @@ class XML_FOAF extends XML_FOAF_Common
         if (substr($phone, 0, 4) != 'tel:') {
             $phone = 'tel:' .$phone;
         }
-        $this->children['phone'][] =& $this->foaf->addChild('foaf:phone', 
+        $this->children['phone'][] = $this->foaf->addChild('foaf:phone', 
             '', array('rdf:resource' => $phone));
     }
 
@@ -371,10 +371,10 @@ class XML_FOAF extends XML_FOAF_Common
             if ($is_sha1_hash == false) {
                 $mbox = sha1($mbox);
             }
-            $this->children['mbox_sha1sum'][] =& 
+            $this->children['mbox_sha1sum'][] = 
                 $this->foaf->addChild('foaf:mbox_sha1sum', $mbox);
         } else {
-            $this->children['mbox'][] =& 
+            $this->children['mbox'][] = 
                 $this->foaf->addChild('foaf:mbox', 
                     '', array('rdf:resource' => $mbox));
         }
@@ -412,7 +412,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function setGender($gender)
     {
-        $this->children['gender'] =& 
+        $this->children['gender'] = 
             $this->foaf->addChild('foaf:gender', strtolower($gender));
     }
 
@@ -429,7 +429,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addJabberID($jabber_id)
     {
-        $this->children['jabbberid'][] =& 
+        $this->children['jabbberid'][] = 
             $this->foaf->addChild('foaf:jabberID', $jabber_id);
     }
 
@@ -446,7 +446,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addAimChatID($aim_chat_id)
     {
-        $this->children['aimchatid'][] =& 
+        $this->children['aimchatid'][] = 
             $this->foaf->addChild('foaf:aimChatID', $aim_chat_id);
     }
 
@@ -463,7 +463,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addIcqChatID($icq_chat_id)
     {
-        $this->children['icqchatid'][] =& 
+        $this->children['icqchatid'][] = 
             $this->foaf->addChild('foaf:icqChatID', $icq_chat_id);
     }
 
@@ -480,7 +480,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addYahooChatID($yahoo_chat_id)
     {
-        $this->children['yahoochatid'][] =& 
+        $this->children['yahoochatid'][] = 
             $this->foaf->addChild('foaf:yahooChatID', $yahoo_chat_id);
     }
 
@@ -497,7 +497,7 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addMsnChatID($msn_chat_id)
     {
-        $this->children['msnchatid'][] =&  
+        $this->children['msnchatid'][] =  
             $this->foaf->addChild('foaf:msnChatID', $msn_chat_id);
     }
 
@@ -529,8 +529,8 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addOnlineAccount($account_name, $account_service_homepage = null, $account_type = null)
     {
-        $holds_account  =& $this->foaf->addChild('foaf:holdsAccount');
-        $online_account =& $holds_account->addChild('foaf:OnlineAccount');
+        $holds_account  = $this->foaf->addChild('foaf:holdsAccount');
+        $online_account = $holds_account->addChild('foaf:OnlineAccount');
         $online_account->addChild('foaf:accountName', $account_name);
         if (!is_null($account_service_homepage)) {
             $online_account->addChild('foaf:accountServiceHomepage', 
@@ -540,7 +540,7 @@ class XML_FOAF extends XML_FOAF_Common
             $online_account->addChild('rdf:type', 
                 '', array('rdf:resource' => $account_type));
         }
-        $this->children['holdsaccount'][] =& $holds_account;
+        $this->children['holdsaccount'][] = $holds_account;
     }
 
     /**
@@ -567,14 +567,14 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addOnlineChatAccount($account_name,$account_service_homepage)
     {
-        $holds_account       =& $this->foaf->addChild('foaf:holdsAccount');
-        $online_chat_account =& $holds_account->addChild('foaf:OnlineChatAccount');
+        $holds_account       = $this->foaf->addChild('foaf:holdsAccount');
+        $online_chat_account = $holds_account->addChild('foaf:OnlineChatAccount');
         $online_chat_account->addChild('foaf:accountName', $account_name);
         if (!is_null($account_service_homepage)) {
             $online_chat_account->addChild('foaf:accountServiceHomepage', 
                 '', array('rdf:resource' => $account_service_homepage));
         }
-        $this->children['holdsaccount'][] =& $holds_account;
+        $this->children['holdsaccount'][] = $holds_account;
     }
 
     /**
@@ -601,15 +601,15 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addOnlineGamingAccount($account_name,$account_service_homepage)
     {
-        $holds_account         =& $this->foaf->addChild('foaf:holdsAccount');
-        $online_gaming_account =& 
+        $holds_account         = $this->foaf->addChild('foaf:holdsAccount');
+        $online_gaming_account = 
             $holds_account->addChild('foaf:OnlineGamingAccount');
         $online_gaming_account->addChild('foaf:accountName', $account_name);
         if (!is_null($account_service_homepage)) {
             $online_gaming_account->addChild('foaf:accountServiceHomepage', 
                 '', array('rdf:resource' => $account_service_homepage));
         }
-        $this->children['holdsaccount'][] =& $holds_account;
+        $this->children['holdsaccount'][] = $holds_account;
     }
 
     /**
@@ -636,15 +636,15 @@ class XML_FOAF extends XML_FOAF_Common
      */
     function addOnlineEcommerceAccount($account_name,$account_service_homepage)
     {
-        $holds_account            =& $this->foaf->addChild('foaf:holdsAccount');
-        $online_ecommerce_account =& 
+        $holds_account            = $this->foaf->addChild('foaf:holdsAccount');
+        $online_ecommerce_account = 
             $holds_account->addChild('foaf:OnlineEcommerceAccount');
         $online_ecommerce_account->addChild('foaf:accountName', $account_name);
         if (!is_null($account_service_homepage)) {
             $online_ecommerce_account->addChild('foaf:accountServiceHomepage', 
                 '', array('rdf:resource' => $account_service_homepage));
         }
-        $this->children['holdsaccount'][] =& $holds_account;
+        $this->children['holdsaccount'][] = $holds_account;
     }
 
     /**
@@ -662,7 +662,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         $uri = $this->_resolveURI($uri);
 
-        $this->children['homepage'][] =& $this->foaf->addChild('foaf:homepage', 
+        $this->children['homepage'][] = $this->foaf->addChild('foaf:homepage', 
             '', array('rdf:resource' => $uri));
     }
 
@@ -681,7 +681,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         $uri = $this->_resolveURI($uri);
 
-        $this->children['weblog'][] =& $this->foaf->addChild('foaf:weblog', 
+        $this->children['weblog'][] = $this->foaf->addChild('foaf:weblog', 
             '', array('rdf:resource' => $uri));
     }
 
@@ -699,7 +699,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         $uri = $this->_resolveURI($uri);
 
-        $this->children['made'][] =& $this->foaf->addChild('foaf:made', 
+        $this->children['made'][] = $this->foaf->addChild('foaf:made', 
             '', array('rdf:resource' => $uri));
     }
 
@@ -726,7 +726,7 @@ class XML_FOAF extends XML_FOAF_Common
     function setGeekcode($geek_code)
     {
         if ($this->isAllowedForAgent('geekcode')) {
-            $this->children['geekcode'] =& 
+            $this->children['geekcode'] = 
                 $this->foaf->addChild('foaf:geekcode', $geek_code);
             return true;
         } else {
@@ -749,7 +749,7 @@ class XML_FOAF extends XML_FOAF_Common
     function setFirstName($first_name)
     {
         if ($this->isAllowedForAgent('firstname')) {
-            $this->children['firstname'] =& 
+            $this->children['firstname'] = 
                 $this->foaf->addChild('foaf:firstName', $first_name);
             return true;
         } else {
@@ -771,7 +771,7 @@ class XML_FOAF extends XML_FOAF_Common
     function setSurname($surname)
     {
         if ($this->isAllowedForAgent('surname')) {
-            $this->children['surname'] =& 
+            $this->children['surname'] = 
                 $this->foaf->addChild('foaf:surname', $surname);
             return true;
         } else {
@@ -793,7 +793,7 @@ class XML_FOAF extends XML_FOAF_Common
     function setFamilyName($family_name)
     {
         if ($this->isAllowedForAgent('family_name')) {
-            $this->children['familyname'] =& 
+            $this->children['familyname'] = 
                 $this->foaf->addChild('foaf:family_name', $family_name);
             return true;
         } else {
@@ -815,7 +815,7 @@ class XML_FOAF extends XML_FOAF_Common
     function setPlan($plan)
     {
         if ($this->isAllowedForAgent('plan')) {
-            $this->children['plan'] =& $this->foaf->addChild('foaf:plan', $plan);
+            $this->children['plan'] = $this->foaf->addChild('foaf:plan', $plan);
             return true;
         } else {
             return false;
@@ -837,7 +837,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('img')) {
             $uri                     = $this->_resolveURI($uri);
-            $this->children['img'][] =& $this->foaf->addChild('foaf:img', 
+            $this->children['img'][] = $this->foaf->addChild('foaf:img', 
                 '', array('rdf:resource' => $uri));
             return true;
         } else {
@@ -862,7 +862,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('myersbriggs')) {
             $uri                             = $this->_resolveURI($uri);
-            $this->children['myersbriggs'][] =& 
+            $this->children['myersbriggs'][] = 
                 $this->foaf->addChild('foaf:myersBriggs', $myers_briggs);
             return true;
         } else {
@@ -885,7 +885,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('workplaceHomepage')) {
             $uri                                   = $this->_resolveURI($uri);
-            $this->children['workplacehomepage'][] =& 
+            $this->children['workplacehomepage'][] = 
                 $this->foaf->addChild('foaf:workplaceHomepage', 
                     '', array('rdf:resource' => $uri));
             return true;
@@ -909,7 +909,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('workInfoHomepage')) {
             $uri                                  = $this->_resolveURI($uri);
-            $this->children['workinfohomepage'][] =& 
+            $this->children['workinfohomepage'][] = 
                 $this->foaf->addChild('foaf:workInfoHomepage', 
                     '', array('rdf:resource' => $uri));
             return true;
@@ -957,7 +957,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('publications')) {
             $uri                              = $this->_resolveURI($uri);
-            $this->children['publications'][] =& 
+            $this->children['publications'][] = 
                 $this->foaf->addChild('foaf:publications', 
                     '', array('rdf:resource' => $uri));
             return true;
@@ -981,7 +981,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('currentProject')) {
             $uri                                = $this->_resolveURI($uri);
-            $this->children['currentproject'][] =& 
+            $this->children['currentproject'][] = 
                 $this->foaf->addChild('foaf:currentProject', 
                     '', array('rdf:resource' => $uri));
             return true;
@@ -1005,7 +1005,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('pastProject')) {
             $uri                             = $this->_resolveURI($uri);
-            $this->children['pastproject'][] =& 
+            $this->children['pastproject'][] = 
                 $this->foaf->addChild('foaf:pastProject', 
                     '', array('rdf:resource' => $uri));
             return true;
@@ -1034,11 +1034,11 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('based_near')) {
             $this->namespaces['geo'] = 'http://www.w3.org/2003/01/geo/wgs84_pos#';
-            $based_near              =& $this->foaf->addChild('foaf:based_near');
-            $geo_point               =& $based_near->addChild('geo:Point', 
+            $based_near              = $this->foaf->addChild('foaf:based_near');
+            $geo_point               = $based_near->addChild('geo:Point', 
                 '', array('geo:lat' => $geo_lat, 'geo:long' => $geo_long));
 
-            $this->children['basednear'][] =& $based_near;
+            $this->children['basednear'][] = $based_near;
             return true;
         } else {
             return false;
@@ -1061,7 +1061,7 @@ class XML_FOAF extends XML_FOAF_Common
     {
         if ($this->isAllowedForAgent('interest')) {
             $uri                          = $this->_resolveURI($uri);
-            $this->children['interest'][] =& 
+            $this->children['interest'][] = 
                 $this->foaf->addChild('foaf:interest', 
                     '', array('rdf:resource' => $uri));
         } else {
@@ -1074,7 +1074,7 @@ class XML_FOAF extends XML_FOAF_Common
     /**
      * Add a foaf:member element
      *
-     * @param object &$foaf_agent XML_FOAF object (with a foaf:agent set)
+     * @param object $foaf_agent XML_FOAF object (with a foaf:agent set)
      *
      * @return boolean
      * @access public
@@ -1082,12 +1082,12 @@ class XML_FOAF extends XML_FOAF_Common
      *       FOAF Specification foaf:member
      * @foafstatus unstable
      */
-    function &addMember(&$foaf_agent)
+    function addMember($foaf_agent)
     {
         if ($this->isAllowedForAgent('member')) {
-            $member =& $this->foaf->addChild('foaf:member');
+            $member = $this->foaf->addChild('foaf:member');
             $member->addChild($foaf_agent);
-            $this->children['member'][] =& $member;
+            $this->children['member'][] = $member;
             return true;
         } else {
             return false;
@@ -1097,7 +1097,7 @@ class XML_FOAF extends XML_FOAF_Common
     /**
      * Set foaf:membershipClass
      *
-     * @param mixed &$membership_class XML String or XML_Tree/XML_Tree_Node object
+     * @param mixed $membership_class XML String or XML_Tree/XML_Tree_Node object
      *
      * @return boolean
      * @access public
@@ -1105,16 +1105,16 @@ class XML_FOAF extends XML_FOAF_Common
      *       FOAF Specification foaf:membershipClass
      * @foafstatus unstable
      */
-    function setMembershipClass(&$membership_class)
+    function setMembershipClass($membership_class)
     {
         if ($this->isAllowedForAgent('membershipClass')) {
             if (is_string($membership_class)) {
                 $membership_tree = new XML_Tree;
                 $membership_tree->getTreeFromString($membership_class);
-                $this->children['membershipclass'] =& 
+                $this->children['membershipclass'] = 
                     $this->foaf->addChild($membership_tree);
             } else {
-                $this->children['membershipclass'] =& 
+                $this->children['membershipclass'] = 
                     $this->foaf->addChild($membership_class);
             }
             return true;
@@ -1140,14 +1140,14 @@ class XML_FOAF extends XML_FOAF_Common
     {
         $uri = $this->_resolveURI($uri);
 
-        $this->children['seealso'][] =& 
+        $this->children['seealso'][] = 
             $this->foaf->addChild('rdfs:seeAlso', '', array('rdf:resource' => $uri));
     }
 
     /**
      * set a foaf:knows
      *
-     * @param object &$foaf_agent XML_FOAF Object for the foaf:knows Agent
+     * @param object $foaf_agent XML_FOAF Object for the foaf:knows Agent
      *
      * @return boolean
      * @access public
@@ -1155,9 +1155,9 @@ class XML_FOAF extends XML_FOAF_Common
      *       FOAF Specification foaf:knows
      * @foafstatus testing
      */
-    function &addKnows(&$foaf_agent)
+    function addKnows($foaf_agent)
     {
-        $this->knows =& $this->foaf->addChild('foaf:knows');
+        $this->knows = $this->foaf->addChild('foaf:knows');
         $this->knows->addChild($foaf_agent->foaf);
         return true;
     }
@@ -1165,12 +1165,12 @@ class XML_FOAF extends XML_FOAF_Common
     /**
      * Add an XML_Tree, XML_Tree_Node object or XML String to the FOAF
      *
-     * @param mixed &$xml_tree XML_Tree, XML_Tree_Node or XML String
+     * @param mixed $xml_tree XML_Tree, XML_Tree_Node or XML String
      *
      * @return boolean
      * @access public
      */
-    function addChild(&$xml_tree)
+    function addChild($xml_tree)
     {
         if (is_array($xml_tree)) {
             if (is_string($xml_tree['xml'])) {
