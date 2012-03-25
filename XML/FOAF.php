@@ -1,7 +1,4 @@
 <?php
-
-/* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
-
 /**
  * XML_FOAF
  *
@@ -69,22 +66,28 @@ class XML_FOAF extends XML_FOAF_Common
 {
 
     /**
-     * @var object XML_Tree object containing the FOAF RDF/XML Tree
+     * Object containing the FOAF RDF/XML Tree
+     *
+     * @var XML_Tree $foaf
      */
     var $foaf = null;
 
     /**
-     * @var array Contains all namespaces in use
+     * Contains all namespaces in use
+     *
+     * @var array
      */
     var $namespaces = array();
 
     /**
-     * @var array Contains XML_Tree Child nodes for all FOAF elements
+     * Contains XML_Tree Child nodes for all FOAF elements
+     * @var array
      */
     var $children = array();
 
     /**
-     * @var object XML_Tree object for the FOAF
+     * XML_Tree object for the FOAF
+     * @var XML_Tree
      */
     var $xml_tree = null;
 

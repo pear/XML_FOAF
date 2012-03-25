@@ -82,32 +82,39 @@ define('XML_FOAF_AGENT', 4);
 class XML_FOAF_Parser extends XML_FOAF_Common
 {
     /**
-     * @var string Original FOAF file
+     * Original FOAF file
+     *
+     * @var string
      */
     var $foaf_xml = '';
 
     /**
-     * @var array FOAF data as Array
+     * FOAF data as Array
+     * @var array
      */
     var $foaf_data;
 
     /**
-     * @var object MemModel of FOAF
+     * MemModel of FOAF
+     * @var object 
      */
     var $foaf;
 
     /**
-     * @var object Instance of the RAP RDF_Parser
+     * Instance of the RAP RDF_Parser
+     * @var object
      */
     var $rdf_parser;
 
     /**
-     * @var array Nodes assumed to be primary foaf:Agents
+     * Nodes assumed to be primary foaf:Agents
+     * @var array 
      */
     var $agent_nodes = array();
 
     /**
-     * @var array Nodes found in <foaf:knows>
+     *  Nodes found in <foaf:knows>
+     * @var array
      */
     var $known_nodes = array();
 
