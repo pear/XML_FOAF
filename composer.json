@@ -13,7 +13,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "XML_FOAF": "./"
+            "XML": "./"
         }
     },
     "description": "A library to create and read FOAF (rdf) content in PHP.",
@@ -28,7 +28,8 @@
     },
     "type": "library",
     "require": {
-        "pear/pear_exception": "*"
+        "pear/pear_exception": "*",
+        "pear/rdf": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
