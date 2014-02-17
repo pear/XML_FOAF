@@ -1,0 +1,36 @@
+{
+    "authors": [
+        {
+            "email": "davey@php.net",
+            "name": "Davey Shafik",
+            "role": "Lead"
+        },
+        {
+            "email": "ashnazg@php.net",
+            "name": "Chuck Burgess",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "XML_FOAF": "./"
+        }
+    },
+    "description": "A library to create and read FOAF (rdf) content in PHP.",
+    "include-path": [
+        "./"
+    ],
+    "license": "BSD License",
+    "name": "pear/xml_foaf",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=XML_FOAF",
+        "source": "https://github.com/pear/XML_FOAF"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
